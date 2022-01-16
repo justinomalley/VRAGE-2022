@@ -1,0 +1,206 @@
+fileFormatVersion: 2
+guid: 054aa910a427244829f15d5ba105b013
+timeCreated: 1492708756
+licenseType: Free
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: Beginning_BigFin_Joint_Whale
+    100002: EndBigFin_Joint_Whale
+    100004: Head_Joint_Whale
+    100006: Joint01_Whale
+    100008: Joint02_Whale
+    100010: Joint03_Whale
+    100012: Joint04_Whale
+    100014: Joint05_Whale
+    100016: Joint06_Whale
+    100018: L_Elbow_Joint_Whale
+    100020: L_FinTip_Joint_Whale
+    100022: L_Shoulder_Joint_Whale
+    100024: Left_Eye_Whale
+    100026: Master_Control_Whale
+    100028: Master_Head_Control_Whale
+    100030: Master_Joint_Whale
+    100032: Nose_Joint_Whale
+    100034: R_Elbow_Joint_Whale
+    100036: R_FinTip_Joint_Whale
+    100038: R_Shoulder_Joint_Whale
+    100040: Right_Eye_Whale
+    100042: WhalePolygons
+    100044: //RootNode
+    400000: Beginning_BigFin_Joint_Whale
+    400002: EndBigFin_Joint_Whale
+    400004: Head_Joint_Whale
+    400006: Joint01_Whale
+    400008: Joint02_Whale
+    400010: Joint03_Whale
+    400012: Joint04_Whale
+    400014: Joint05_Whale
+    400016: Joint06_Whale
+    400018: L_Elbow_Joint_Whale
+    400020: L_FinTip_Joint_Whale
+    400022: L_Shoulder_Joint_Whale
+    400024: Left_Eye_Whale
+    400026: Master_Control_Whale
+    400028: Master_Head_Control_Whale
+    400030: Master_Joint_Whale
+    400032: Nose_Joint_Whale
+    400034: R_Elbow_Joint_Whale
+    400036: R_FinTip_Joint_Whale
+    400038: R_Shoulder_Joint_Whale
+    400040: Right_Eye_Whale
+    400042: WhalePolygons
+    400044: //RootNode
+    4300000: WhalePolygons
+    4300002: Right_Eye_Whale
+    4300004: Left_Eye_Whale
+    7400000: Take 001
+    9500000: //RootNode
+    11100000: //RootNode
+    13700000: Left_Eye_Whale
+    13700002: Right_Eye_Whale
+    13700004: WhalePolygons
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 2
+    extraExposedTransformPaths: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: Take 001
+      takeName: Take 001
+      firstFrame: 1
+      lastFrame: 81
+      wrapMode: 2
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 1
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Master_Control_Whale
+        weight: 1
+      - path: Master_Control_Whale/Master_Head_Control_Whale
+        weight: 1
+      - path: Master_Joint_Whale
+        weight: 1
+      - path: Master_Joint_Whale/Head_Joint_Whale
+        weight: 1
+      - path: Master_Joint_Whale/Head_Joint_Whale/Nose_Joint_Whale
+        weight: 1
+      - path: Master_Joint_Whale/Joint01_Whale
+        weight: 1
+      - path: Master_Joint_Whale/Joint01_Whale/Joint02_Whale
+        weight: 1
+      - path: Master_Joint_Whale/Joint01_Whale/Joint02_Whale/Joint03_Whale
+        weight: 1
+      - path: Master_Joint_Whale/Joint01_Whale/Joint02_Whale/Joint03_Whale/Joint04_Whale
+        weight: 1
+      - path: Master_Joint_Whale/Joint01_Whale/Joint02_Whale/Joint03_Whale/Joint04_Whale/Joint05_Whale
+        weight: 1
+      - path: Master_Joint_Whale/Joint01_Whale/Joint02_Whale/Joint03_Whale/Joint04_Whale/Joint05_Whale/Joint06_Whale
+        weight: 1
+      - path: Master_Joint_Whale/Joint01_Whale/Joint02_Whale/Joint03_Whale/Joint04_Whale/Joint05_Whale/Joint06_Whale/Beginning_BigFin_Joint_Whale
+        weight: 1
+      - path: Master_Joint_Whale/Joint01_Whale/Joint02_Whale/Joint03_Whale/Joint04_Whale/Joint05_Whale/Joint06_Whale/Beginning_BigFin_Joint_Whale/EndBigFin_Joint_Whale
+        weight: 1
+      - path: Master_Joint_Whale/L_Shoulder_Joint_Whale
+        weight: 1
+      - path: Master_Joint_Whale/L_Shoulder_Joint_Whale/L_Elbow_Joint_Whale
+        weight: 1
+      - path: Master_Joint_Whale/L_Shoulder_Joint_Whale/L_Elbow_Joint_Whale/L_FinTip_Joint_Whale
+        weight: 1
+      - path: Master_Joint_Whale/R_Shoulder_Joint_Whale
+        weight: 1
+      - path: Master_Joint_Whale/R_Shoulder_Joint_Whale/R_Elbow_Joint_Whale
+        weight: 1
+      - path: Master_Joint_Whale/R_Shoulder_Joint_Whale/R_Elbow_Joint_Whale/R_FinTip_Joint_Whale
+        weight: 1
+      - path: WhalePolygons
+        weight: 1
+      - path: WhalePolygons/Left_Eye_Whale
+        weight: 1
+      - path: WhalePolygons/Right_Eye_Whale
+        weight: 1
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 1
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 1
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
