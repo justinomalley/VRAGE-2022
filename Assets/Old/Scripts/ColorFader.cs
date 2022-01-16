@@ -13,15 +13,14 @@ public class ColorFader : MonoBehaviour {
     private Color origColor;
     
     [SerializeField]
-    private bool fadeIn;
-
-    [SerializeField]
     private Material targetMaterial;
     
     [SerializeField]
     private float fadeTime = 1f;
     
     private float timer, startTime;
+    
+    private bool fadeIn;
 
     private void Awake() {
         origColor = targetMaterial.color;

@@ -9,28 +9,31 @@ using UnityEngine.InputSystem;
 public class GenericThumbstickForwardTracker : MonoBehaviour {
     [SerializeField]
     private InputActionReference m_ActionReference;
-    
-    public InputActionReference actionReference { get => m_ActionReference; set => m_ActionReference = value; }
+
+    private InputActionReference actionReference { get => m_ActionReference; set => m_ActionReference = value; }
     
     private UnityEvent thumbstickForwardEvent { get; } = new UnityEvent();
+    
     private UnityEvent thumbstickReleasedEvent { get; } = new UnityEvent();
 
     private bool thumbstickForward, lastFrameThumbstickForward;
 
-    private float forwardThreshold = 0.75f;
-    
+    private const float ForwardThreshold = 0.75f;
+
     private void Update() {
         if (actionReference == null || actionReference.action == null) {
             return;
         }
         
         var value = actionReference.action.ReadValue<Vector2>().y;
-        thumbstickForward = value >= forwardThreshold;
+        thumbstickForward = value >= ForwardThreshold;
 
         switch (thumbstickForward) {
+            // If thumbstick was pushed forward this frame...
             case true when !lastFrameThumbstickForward:
                 ThumbstickForward();
                 break;
+            // If thumbstick was released this frame...
             case false when lastFrameThumbstickForward:
                 ThumbstickReleased();
                 break;

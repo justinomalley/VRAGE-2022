@@ -4,22 +4,32 @@ public class GenericXRController : MonoBehaviour {
 
     private GenericXRButton trigger;
     private GenericThumbstickForwardTracker thumbstickTracker;
+
+    private bool triggerPressed, thumbstickForward;
     
     private void Awake() {
         trigger = GetComponent<GenericXRButton>();
         trigger.AddButtonPressedListener(() => {
-            Debug.Log("button pressed! " + gameObject.name);
+            triggerPressed = true;
         });
         trigger.AddButtonUnpressedListener(() => {
-            Debug.Log("button unpressed! " + gameObject.name);
+            triggerPressed = false;
         });
 
         thumbstickTracker = GetComponent<GenericThumbstickForwardTracker>();
         thumbstickTracker.AddThumbstickForwardListener(() => {
-            Debug.Log("thumbstick forward! " + gameObject.name);
+            thumbstickForward = true;
         });
         thumbstickTracker.AddThumbstickReleasedListener(() => {
-            Debug.Log("thumbstick released! " + gameObject.name);
+            thumbstickForward = false;
         });
+    }
+    
+    public bool TriggerPressed() {
+        return triggerPressed;
+    }
+
+    public bool ThumbstickForward() {
+        return thumbstickForward;
     }
 }
