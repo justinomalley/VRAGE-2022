@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class GenericXRController : MonoBehaviour {
+public class GenericXRController : MonoBehaviour, IXRController {
 
     private GenericXRButton trigger;
     private GenericThumbstickForwardTracker thumbstickTracker;

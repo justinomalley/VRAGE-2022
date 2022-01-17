@@ -357,7 +357,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   action: {fileID: 6986180202050166755, guid: e0ca4504471ca124088e1e2cfe6804ae, type: 3}
-  _amplitude: 1
+  _amplitude: 0.5
   _duration: 0.1
 --- !u!114 &7577846002882539933
 MonoBehaviour:
@@ -587,7 +587,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   action: {fileID: 6454596279149084813, guid: e0ca4504471ca124088e1e2cfe6804ae, type: 3}
-  _amplitude: 1
+  _amplitude: 0.5
   _duration: 0.1
 --- !u!114 &7577846003044499699
 MonoBehaviour:
