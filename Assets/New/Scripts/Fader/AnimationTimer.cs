@@ -5,6 +5,8 @@ public class AnimationTimer {
 
     private bool started, finished;
     
+    private AnimationCurve animCurve = AnimationCurve.Linear(0, 0, 1, 1);
+    
     // This is not a MonoBehaviour, so it will need to be updated from another script.
     public void Update () {
         if (!started || finished) {
@@ -13,7 +15,7 @@ public class AnimationTimer {
 
         if (progress < 1) {
             timer = Time.time - startTime;
-            progress = timer / duration;
+            progress = animCurve.Evaluate(timer / duration);
         } else {
             finished = true;
             started = false;
@@ -45,5 +47,9 @@ public class AnimationTimer {
 
     public bool Finished() {
         return finished;
+    }
+
+    public void SetAnimationCurve(AnimationCurve curve) {
+        animCurve = curve;
     }
 }

@@ -73,7 +73,7 @@ LineRenderer:
   m_SortingOrder: 0
   m_Positions:
   - {x: 0, y: 0, z: 0}
-  - {x: 0, y: -1, z: 1}
+  - {x: 0, y: -10, z: 10}
   m_Parameters:
     serializedVersion: 3
     widthMultiplier: 0.01
@@ -202,7 +202,7 @@ LineRenderer:
   m_SortingOrder: 0
   m_Positions:
   - {x: 0, y: 0, z: 0}
-  - {x: 0, y: -1, z: 1}
+  - {x: 0, y: -10, z: 10}
   m_Parameters:
     serializedVersion: 3
     widthMultiplier: 0.01
@@ -581,6 +581,7 @@ GameObject:
   - component: {fileID: 7577846002882539934}
   - component: {fileID: 7577846002882539928}
   - component: {fileID: 734623504}
+  - component: {fileID: 734623506}
   m_Layer: 0
   m_Name: LeftHand
   m_TagString: Untagged
@@ -677,6 +678,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 02fc57102f2c0da49a16ef69780bfe50, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hand: 0
 --- !u!114 &7577846002882539934
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -715,8 +717,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6d6864680b8fd342952f6a3aeeb0e95, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isLeftHand: 1
   debug: 1
+--- !u!114 &734623506
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7577846002882539906}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d698049515745d429a7a545b3e12ae5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7577846002928634291
 GameObject:
   m_ObjectHideFlags: 0
@@ -728,10 +741,11 @@ GameObject:
   - component: {fileID: 7577846002928637516}
   - component: {fileID: 7577846002928637519}
   - component: {fileID: 7577846002928637518}
+  - component: {fileID: 40602822}
   - component: {fileID: 7577846002928637517}
   m_Layer: 0
   m_Name: Cube
-  m_TagString: Untagged
+  m_TagString: Controller
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -799,6 +813,22 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!54 &40602822
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7577846002928634291}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!65 &7577846002928637517
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -827,6 +857,7 @@ GameObject:
   - component: {fileID: 7577846003044499596}
   - component: {fileID: 7577846003044499598}
   - component: {fileID: 1799068924}
+  - component: {fileID: 1799068926}
   m_Layer: 0
   m_Name: RightHand
   m_TagString: Untagged
@@ -923,6 +954,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 02fc57102f2c0da49a16ef69780bfe50, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hand: 1
 --- !u!114 &7577846003044499596
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -961,8 +993,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6d6864680b8fd342952f6a3aeeb0e95, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isLeftHand: 0
   debug: 1
+--- !u!114 &1799068926
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7577846003044499696}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d698049515745d429a7a545b3e12ae5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7577846003357703563
 GameObject:
   m_ObjectHideFlags: 0
@@ -1069,10 +1112,11 @@ GameObject:
   - component: {fileID: 7577846003450478807}
   - component: {fileID: 7577846003450478802}
   - component: {fileID: 7577846003450478801}
+  - component: {fileID: 1366592853}
   - component: {fileID: 7577846003450478800}
   m_Layer: 0
   m_Name: Cube
-  m_TagString: Untagged
+  m_TagString: Controller
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1140,6 +1184,22 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!54 &1366592853
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7577846003450478806}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!65 &7577846003450478800
 BoxCollider:
   m_ObjectHideFlags: 0

@@ -6,6 +6,9 @@ public class GenericXRController : MonoBehaviour, IXRController {
     private GenericThumbstickForwardTracker thumbstickTracker;
 
     private bool triggerPressed, thumbstickForward;
+
+    [SerializeField]
+    private Hand hand;
     
     private void Awake() {
         trigger = GetComponent<GenericXRButton>();
@@ -39,5 +42,9 @@ public class GenericXRController : MonoBehaviour, IXRController {
 
     public Quaternion Rotation() {
         return transform.rotation;
+    }
+
+    public Hand Hand() {
+        return hand;
     }
 }

@@ -14,7 +14,7 @@ public class Fader<T> : MonoBehaviour {
 
     private bool finishedFadingEventFired;
 
-    private T startValue, endValue, currentValue;
+    protected T startValue, endValue, currentValue;
 
     private bool initialized = true;
 
@@ -78,5 +78,9 @@ public class Fader<T> : MonoBehaviour {
         finishedFadingEventFired = false;
         SetValue(value);
         timer.Stop();
+    }
+
+    public void SetAnimationCurve(AnimationCurve curve) {
+        timer.SetAnimationCurve(curve);
     }
 }
