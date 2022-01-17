@@ -32,4 +32,12 @@ public class GenericXRController : MonoBehaviour, IXRController {
     public bool ThumbstickForward() {
         return thumbstickForward;
     }
+
+    public Vector3 Position() {
+        return transform.position;
+    }
+
+    public Quaternion Rotation() {
+        return transform.rotation;
+    }
 }

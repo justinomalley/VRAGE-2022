@@ -1,3 +1,5 @@
+using UnityEngine;
+
 /// <summary>
 /// IXRController exists to make it easier to add support for platforms that can't be used with the
 /// generic XR bindings in the future if necessary.
@@ -6,4 +8,6 @@ public interface IXRController {
     public bool TriggerPressed();
 
     public bool ThumbstickForward();
+    public Vector3 Position();
+    public Quaternion Rotation();
 }

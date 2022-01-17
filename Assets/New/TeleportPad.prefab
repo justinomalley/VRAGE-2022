@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 1303331434}
   m_Layer: 0
   m_Name: TeleportPad
-  m_TagString: Plane
+  m_TagString: TeleportPad
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -110,7 +110,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e5a5e845078dee44886c9f8cdc130df6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isStartPad: 0
+  isCurrentPad: 0
 --- !u!114 &1303331433
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -123,8 +123,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed2f9773439d0da4b857e47327d36961, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startAlpha: 0
-  endAlpha: 0.5
   fadeDuration: 0.3
 --- !u!114 &1303331434
 MonoBehaviour:

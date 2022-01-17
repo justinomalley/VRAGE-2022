@@ -10,24 +10,28 @@ public class TeleportPad : MonoBehaviour {
 
     public void Initialize() {
         fader = GetComponent<RendererAlphaFader>();
-        // if (isStartPad) {
-        //     gameObject.SetActive(false);
-        // }
     }
 
     public void FadeIn(float alpha) {
-        if (isCurrentPad) {
-            return;
-        }
         fader.Fade(alpha);
     }
 
     // `action` will be executed when (and if) the fade is complete.
     public void FadeOut(UnityAction action) {
-        if (isCurrentPad) {
-            return;
-        }
         fader.AddCallback(action);
         fader.Fade(0);
+    }
+
+    public bool IsCurrentPad() {
+        return isCurrentPad;
+    }
+    
+    public void SetCurrentPad() {
+        isCurrentPad = true;
+        gameObject.SetActive(false);
+    }
+
+    public void UnsetCurrentPad() {
+        isCurrentPad = false;
     }
 }

@@ -48,7 +48,6 @@ public class Fader<T> : MonoBehaviour {
         timer.Update();
         
         currentValue = property.Evaluate(startValue, endValue, timer.GetProgress());
-        Debug.LogError(endValue);
         component.Set(currentValue);
     }
 
@@ -65,6 +64,7 @@ public class Fader<T> : MonoBehaviour {
         endValue = end;
         timer.Start(duration);
         finishedFadingEvent.RemoveAllListeners();
+        finishedFadingEventFired = false;
     }
 
     public void AddCallback(UnityAction callback) {
