@@ -9,27 +9,55 @@ public class Pointer : MonoBehaviour {
 
     // left if true, right if false
     [SerializeField]
-    private bool left;
+    private bool isLeftHand;
+
+    private bool hold;
+
+    [SerializeField]
+    private bool debug;
+    
+    private IXRController controller;
 
     private void Awake() {
+        controller = GetComponent<IXRController>();
         lineRenderer = GetComponentInChildren<LineRenderer>();
         var positions = new Vector3[2];
         lineRenderer.GetPositions(positions);
         forward = positions[1].normalized;
     }
-    
+
+    private bool activePointer;
+
     private void Update() {
+        if (!controller.ThumbstickForward()) {
+            if (!activePointer) {
+                return;
+            }
+            TeleportPadManager.TeleportControlReleased(isLeftHand);
+            activePointer = false;
+            return;
+        }
+        
         var fwd = transform.TransformDirection(forward.normalized);
-        Debug.DrawRay(transform.position, fwd * 50, Color.green);
+
+        if (debug) {
+            Debug.DrawRay(transform.position, fwd * 50, Color.green);
+        }
+
+        if (!activePointer) {
+            TeleportPadManager.TeleportControlForward(isLeftHand);
+            activePointer = true;
+        }
+
         if (Physics.Raycast(transform.position, fwd, out var objectHit, 50)) {
             if (objectHit.transform.gameObject.CompareTag("TeleportPad")) {
                 currentPad = objectHit.transform.GetComponent<TeleportPad>();
-                TeleportPadManager.HitPad(currentPad, left);
+                TeleportPadManager.HitPad(currentPad, isLeftHand);
             } else {
-                TeleportPadManager.StoppedHittingPad(left);
+                TeleportPadManager.StoppedHittingPad(isLeftHand);
             }
         } else {
-            TeleportPadManager.StoppedHittingPad(left);
+            TeleportPadManager.StoppedHittingPad(isLeftHand);
         }
     }
 }

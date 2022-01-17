@@ -269,6 +269,11 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 7577846002882539906, guid: 67958c4ad40e3b9458211c01475267f0, type: 3}
   m_PrefabInstance: {fileID: 7577846003330983500}
   m_PrefabAsset: {fileID: 0}
+--- !u!4 &817508070 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7577846002541204393, guid: 67958c4ad40e3b9458211c01475267f0, type: 3}
+  m_PrefabInstance: {fileID: 7577846003330983500}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1405786277
 GameObject:
   m_ObjectHideFlags: 0
@@ -804,17 +809,9 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 949530931, guid: 78316d143cbd3a84b8b3a439d0a5a443, type: 3}
-      propertyPath: padColor.a
-      value: 0.29803923
-      objectReference: {fileID: 0}
-    - target: {fileID: 949530931, guid: 78316d143cbd3a84b8b3a439d0a5a443, type: 3}
-      propertyPath: controllersObjs.Array.data[0]
+      propertyPath: cameraRigTransform
       value: 
-      objectReference: {fileID: 734623498}
-    - target: {fileID: 949530931, guid: 78316d143cbd3a84b8b3a439d0a5a443, type: 3}
-      propertyPath: controllersObjs.Array.data[1]
-      value: 
-      objectReference: {fileID: 1799068918}
+      objectReference: {fileID: 817508070}
     - target: {fileID: 1897948434342509503, guid: 78316d143cbd3a84b8b3a439d0a5a443, type: 3}
       propertyPath: m_RootOrder
       value: 3
@@ -863,10 +860,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: TeleportPads
       objectReference: {fileID: 0}
-    - target: {fileID: 9148117868033303151, guid: 78316d143cbd3a84b8b3a439d0a5a443, type: 3}
-      propertyPath: isCurrentPad
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 78316d143cbd3a84b8b3a439d0a5a443, type: 3}
 --- !u!1001 &7577846003330983500
@@ -876,6 +869,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 274227894, guid: 67958c4ad40e3b9458211c01475267f0, type: 3}
+      propertyPath: m_Positions.Array.data[1].y
+      value: -10
+      objectReference: {fileID: 0}
+    - target: {fileID: 274227894, guid: 67958c4ad40e3b9458211c01475267f0, type: 3}
+      propertyPath: m_Positions.Array.data[1].z
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1223170005, guid: 67958c4ad40e3b9458211c01475267f0, type: 3}
+      propertyPath: m_Positions.Array.data[1].y
+      value: -10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1223170005, guid: 67958c4ad40e3b9458211c01475267f0, type: 3}
+      propertyPath: m_Positions.Array.data[1].z
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 7577846002541204392, guid: 67958c4ad40e3b9458211c01475267f0, type: 3}
       propertyPath: m_Name
       value: VRAGECameraRig

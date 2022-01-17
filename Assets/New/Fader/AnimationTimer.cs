@@ -29,6 +29,11 @@ public class AnimationTimer {
         started = true;
         finished = false;
     }
+
+    public void Stop() {
+        started = false;
+        finished = true;
+    }
     
     public bool Running() {
         return started && !finished;

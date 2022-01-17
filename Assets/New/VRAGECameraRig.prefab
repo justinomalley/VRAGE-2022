@@ -715,7 +715,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6d6864680b8fd342952f6a3aeeb0e95, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  left: 1
+  isLeftHand: 1
+  debug: 1
 --- !u!1 &7577846002928634291
 GameObject:
   m_ObjectHideFlags: 0
@@ -960,7 +961,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6d6864680b8fd342952f6a3aeeb0e95, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  left: 0
+  isLeftHand: 0
+  debug: 1
 --- !u!1 &7577846003357703563
 GameObject:
   m_ObjectHideFlags: 0

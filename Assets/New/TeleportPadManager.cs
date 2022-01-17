@@ -4,24 +4,28 @@ public class TeleportPadManager : MonoBehaviour {
 
     private static TeleportPad[] teleportPads;
 
-    // Controller GameObjects should contain IXRController components.
-    [SerializeField]
-    private GameObject[] controllersObjs;
-    
-    private static IXRController[] controllers;
-
-    private static bool active, showing;
-
     [SerializeField]
     private Color padColor;
 
     private static Color _padColor => instance.padColor;
 
+    [SerializeField]
+    private float highlightedAlpha, unhighlightedAlpha;
+
     private static readonly int ColorProperty = Shader.PropertyToID("_Color");
 
+    [SerializeField]
+    private Transform cameraRigTransform;
+    
+    private static Transform _cameraRigTransform => instance.cameraRigTransform;
+    
     private static TeleportPadManager instance;
+    
+    private static bool hittingPad, showingPads;
+    private static bool pointerActive, teleportPadsActive;
+    private static bool pointerInLeftHand;
+    private static TeleportPad currentPad, hitPad;
 
-    private Transform cameraRig;
 
     private void Awake() {
         teleportPads = GetComponentsInChildren<TeleportPad>();
@@ -34,97 +38,95 @@ public class TeleportPadManager : MonoBehaviour {
                 currentPad = teleportPad;
             }
             
-            teleportPad.Initialize();
+            teleportPad.Initialize(highlightedAlpha, unhighlightedAlpha);
             teleportPad.gameObject.SetActive(false);
         }
 
-        controllers = new IXRController[controllersObjs.Length];
-        for (var i = 0; i < controllers.Length; i++) {
-            controllers[i] = controllersObjs[i].GetComponent<IXRController>();
-        }
-
-        cameraRig = GameObject.Find("VRAGECameraRig").transform;
-
         instance = this;
-    }
-    
-    private void Update() {
-        if (!active) {
-            return;
-        }
-
-        var show = false;
-        var go = padIsHit;
-
-        foreach (var controller in controllers) {
-            show |= controller.ThumbstickForward();
-            go &= !controller.ThumbstickForward();
-        }
-
-        switch (show) {
-            case true when !showing:
-                EnableTeleportPads();
-                break;
-            case false when showing:
-                DisableTeleportPads();
-                break;
-        }
-
-        if (go) {
-            cameraRig.position = hitPad.transform.position;
-            currentPad.UnsetCurrentPad();
-            hitPad.SetCurrentPad();
-            currentPad = hitPad;
-        }
     }
 
     public static void Activate() {
-        active = true;
+        teleportPadsActive = true;
     }
 
     private static void EnableTeleportPads() {
-        showing = true;
         foreach (var teleportPad in teleportPads) {
             if (teleportPad.IsCurrentPad()) {
                 continue;
             }
             teleportPad.gameObject.SetActive(true);
-            teleportPad.FadeIn(_padColor.a);
+            teleportPad.FadeIn(instance.unhighlightedAlpha);
         }
     }
 
-    private static void DisableTeleportPads() {
-        showing = false;
+    private static void DisableTeleportPads(bool fade) {
         foreach (var teleportPad in teleportPads) {
             if (teleportPad.IsCurrentPad()) {
                 continue;
             }
-            teleportPad.FadeOut(() => {
-                teleportPad.gameObject.SetActive(false);
-            });
+
+            if (fade) {
+                teleportPad.FadeOutAndDisable();
+            } else {
+                teleportPad.Disable();
+            }
         }
     }
-
-    private static bool padIsHit;
-    private static TeleportPad currentPad, hitPad;
-    private static bool isLeft;
-
-    public static void HitPad(TeleportPad pad, bool left) {
-        if (pad == null || hitPad == pad) {
+    
+    public static void HitPad(TeleportPad pad, bool isLeftHand) {
+        if (hittingPad && hitPad == pad || pointerInLeftHand != isLeftHand) {
             return;
         }
         
-        Debug.Log("Hit pad!");
-        padIsHit = true;
+        pointerInLeftHand = isLeftHand;
+        hittingPad = true;
         hitPad = pad;
+        hitPad.Highlight();
     }
 
-    public static void StoppedHittingPad(bool left) {
-        if (!padIsHit || (padIsHit && isLeft == left)) {
+    public static void StoppedHittingPad(bool isLeftHand) {
+        if (!hittingPad || pointerInLeftHand != isLeftHand) {
             return;
         }
-        Debug.Log("Stopped hitting pad.");
+        
+        hitPad.Unhighlight();
+        
         hitPad = null;
-        padIsHit = false;
+        hittingPad = false;
+    }
+    
+    public static void TeleportControlForward(bool isLeftHand) {
+        if (pointerActive || !teleportPadsActive) {
+            return;
+        }
+
+        if (!showingPads) {
+            showingPads = true;
+            EnableTeleportPads();
+        }
+
+        pointerActive = true;
+        pointerInLeftHand = isLeftHand;
+    }
+
+    public static void TeleportControlReleased(bool isLeftHand) {
+        if (!pointerActive || pointerInLeftHand != isLeftHand || !teleportPadsActive) {
+            return;
+        }
+
+        pointerActive = false;
+        showingPads = false;
+        
+        if (!hittingPad) {
+            DisableTeleportPads(true);
+            return;
+        }
+        
+        DisableTeleportPads(false);
+        
+        _cameraRigTransform.position = hitPad.transform.position;
+        currentPad.UnsetCurrentPad();
+        hitPad.SetCurrentPad();
+        currentPad = hitPad;
     }
 }

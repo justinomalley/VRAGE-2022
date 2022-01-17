@@ -23,9 +23,6 @@ public class Fader<T> : MonoBehaviour {
         property = prop;
         startValue = start;
         endValue = end;
-        if (duration >= 10) {
-            Debug.LogError("wattupppp");
-        }
         duration = dur;
         initialized = true;
     }
@@ -47,8 +44,7 @@ public class Fader<T> : MonoBehaviour {
         
         timer.Update();
         
-        currentValue = property.Evaluate(startValue, endValue, timer.GetProgress());
-        component.Set(currentValue);
+        SetValue(property.Evaluate(startValue, endValue, timer.GetProgress()));
     }
 
     public T CurrentValue() {
@@ -67,7 +63,20 @@ public class Fader<T> : MonoBehaviour {
         finishedFadingEventFired = false;
     }
 
+    // Setting the value this way will stop any ongoing fades and remove listeners.
+    public void SetValue(T value) {
+        currentValue = value;
+        component.Set(currentValue);
+    }
+
     public void AddCallback(UnityAction callback) {
         finishedFadingEvent.AddListener(callback);
+    }
+
+    public void CancelFade(T value) {
+        finishedFadingEvent.RemoveAllListeners();
+        finishedFadingEventFired = false;
+        SetValue(value);
+        timer.Stop();
     }
 }

@@ -45,10 +45,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 878199b2d14a2d54c92ffbc3a1ed6cff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  controllersObjs:
-  - {fileID: 0}
-  - {fileID: 0}
   padColor: {r: 1, g: 0.7333333, b: 0, a: 1}
+  highlightedAlpha: 0.6
+  unhighlightedAlpha: 0.3
+  cameraRigTransform: {fileID: 0}
 --- !u!1001 &6203258376909269317
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -118,6 +118,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1897948434342509503}
     m_Modifications:
+    - target: {fileID: 1303331432, guid: 7409b75b90ce1024484dec59c2c9d4b0, type: 3}
+      propertyPath: isCurrentPad
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3694182353080316529, guid: 7409b75b90ce1024484dec59c2c9d4b0, type: 3}
       propertyPath: m_RootOrder
       value: 0

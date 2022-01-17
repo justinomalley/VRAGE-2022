@@ -8,7 +8,11 @@ public class TeleportPad : MonoBehaviour {
 
     private RendererAlphaFader fader;
 
-    public void Initialize() {
+    private float highlightedAlpha, unhighlightedAlpha;
+
+    public void Initialize(float highlighted, float unhighlighted) {
+        highlightedAlpha = highlighted;
+        unhighlightedAlpha = unhighlighted;
         fader = GetComponent<RendererAlphaFader>();
     }
 
@@ -17,9 +21,16 @@ public class TeleportPad : MonoBehaviour {
     }
 
     // `action` will be executed when (and if) the fade is complete.
-    public void FadeOut(UnityAction action) {
-        fader.AddCallback(action);
+    public void FadeOutAndDisable() {
+        fader.AddCallback(() => {
+            gameObject.SetActive(false);
+        });
         fader.Fade(0);
+    }
+
+    public void Disable() {
+        fader.CancelFade(0);
+        gameObject.SetActive(false);
     }
 
     public bool IsCurrentPad() {
@@ -33,5 +44,14 @@ public class TeleportPad : MonoBehaviour {
 
     public void UnsetCurrentPad() {
         isCurrentPad = false;
+    }
+
+    public void Highlight() {
+        // Cancel fade here just in case we're pointing at the panel before it has faded in
+        fader.CancelFade(highlightedAlpha);
+    }
+
+    public void Unhighlight() {
+        fader.SetValue(unhighlightedAlpha);
     }
 }
