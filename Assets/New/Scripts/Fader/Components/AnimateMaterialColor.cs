@@ -1,16 +1,21 @@
+using System;
 using UnityEngine;
 
 public class AnimateMaterialColor : MonoBehaviour, IAnimatableComponent<Color> {
-    
+    [SerializeField]
     private Material targetMaterial;
+
+    private Color origColor;
 
     private void Awake() {
         if (targetMaterial != null) {
+            origColor = targetMaterial.color;
             return;
         }
         
         targetMaterial = GetComponent<Renderer>()?.material;
         if (targetMaterial != null) {
+            origColor = targetMaterial.color;
             return;
         }
         
@@ -19,5 +24,11 @@ public class AnimateMaterialColor : MonoBehaviour, IAnimatableComponent<Color> {
 
     public void Set(Color property) {
         targetMaterial.color = property;
+    }
+
+    private void OnApplicationQuit() {
+        if (targetMaterial != null) {
+            targetMaterial.color = origColor;
+        }
     }
 }

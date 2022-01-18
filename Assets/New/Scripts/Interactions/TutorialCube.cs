@@ -52,16 +52,14 @@ public class TutorialCube : InteractableObject {
         }
         
         triggered = true;
-        scaleFader.AddCallback(OpenGallery);
+        scaleFader.AddCallback(OpenLobby);
         scaleFader.Fade();
         rotateFader.Fade();
     }
 
-    private void OpenGallery() {
+    private void OpenLobby() {
         Destroy(gameObject);
-        
-        // Load the lobby
-        Debug.LogError("here we go!");
+        App.EnterLobby();
     }
     
     private void Highlight() {

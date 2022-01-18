@@ -1,8 +1,9 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class TeleportPadManager : MonoBehaviour {
-
-    private static TeleportPad[] teleportPads;
+    //
+    private static List<TeleportPad> teleportPads = new List<TeleportPad>(20);
 
     [SerializeField]
     private Color padColor;
@@ -18,31 +19,31 @@ public class TeleportPadManager : MonoBehaviour {
     private Transform cameraRigTransform;
     
     private static Transform _cameraRigTransform => instance.cameraRigTransform;
-    
-    private static TeleportPadManager instance;
-    
+
     private static bool hittingPad, showingPads;
     private static bool pointerActive, teleportPadsActive;
     private static bool pointerInLeftHand;
     private static TeleportPad currentPad, hitPad;
-
-
+    
+    private static TeleportPadManager instance;
+    
     private void Awake() {
-        teleportPads = GetComponentsInChildren<TeleportPad>();
-        foreach (var teleportPad in teleportPads) {
-            var _propBlock = new MaterialPropertyBlock();
-            _propBlock.SetColor(ColorProperty, new Color(padColor.r, padColor.g, padColor.b, 0f));
-            teleportPad.GetComponent<Renderer>().SetPropertyBlock(_propBlock);
+        instance = this;
+    }
 
-            if (teleportPad.IsCurrentPad()) {
-                currentPad = teleportPad;
-            }
-            
-            teleportPad.Initialize(highlightedAlpha, unhighlightedAlpha);
-            teleportPad.gameObject.SetActive(false);
+    private void Update() {
+        if (currentPad == null) {
+            // The current pad should never be null, so spam the console if it is!
+            Debug.LogError("Not currently standing on a pad!");
+        }
+    }
+
+    private static void InitializeIfNecessary() {
+        if (instance != null) {
+            return;
         }
 
-        instance = this;
+        instance = GameObject.Find("TeleportPads").GetComponent<TeleportPadManager>();
     }
 
     public static void Activate() {
@@ -50,25 +51,28 @@ public class TeleportPadManager : MonoBehaviour {
     }
 
     private static void EnableTeleportPads() {
-        foreach (var teleportPad in teleportPads) {
-            if (teleportPad.IsCurrentPad()) {
+        if (!teleportPadsActive) {
+            return;
+        }
+        foreach (var pad in teleportPads) {
+            if (pad.IsCurrentPad()) {
                 continue;
             }
-            teleportPad.gameObject.SetActive(true);
-            teleportPad.FadeIn(instance.unhighlightedAlpha);
+            pad.gameObject.SetActive(true);
+            pad.FadeIn(instance.unhighlightedAlpha);
         }
     }
 
     private static void DisableTeleportPads(bool fade) {
-        foreach (var teleportPad in teleportPads) {
-            if (teleportPad.IsCurrentPad()) {
+        foreach (var pad in teleportPads) {
+            if (pad.IsCurrentPad()) {
                 continue;
             }
 
             if (fade) {
-                teleportPad.FadeOutAndDisable();
+                pad.FadeOutAndDisable();
             } else {
-                teleportPad.Disable();
+                pad.Disable();
             }
         }
     }
@@ -128,5 +132,44 @@ public class TeleportPadManager : MonoBehaviour {
         currentPad.UnsetCurrentPad();
         hitPad.SetCurrentPad();
         currentPad = hitPad;
+    }
+
+    public static void AddTeleportPad(TeleportPad pad) {
+        InitializeIfNecessary();
+        
+        teleportPads.Add(pad);
+        
+        var _propBlock = new MaterialPropertyBlock();
+        _propBlock.SetColor(ColorProperty, new Color(_padColor.r, _padColor.g, _padColor.b, 0f));
+        pad.GetComponent<Renderer>().SetPropertyBlock(_propBlock);
+
+        if (pad.IsCurrentPad()) {
+            currentPad = pad;
+        }
+            
+        pad.SetHighlightValues(instance.highlightedAlpha, instance.unhighlightedAlpha);
+        pad.transform.SetParent(instance.transform);
+        pad.gameObject.SetActive(false);
+    }
+
+    public static void DestroyAllPads() {
+        foreach (var pad in teleportPads) {
+            if (pad.isElevatorPad) {
+                continue;
+            }
+
+            if (currentPad == pad) {
+                currentPad = null;
+            }
+
+            if (hitPad == pad) {
+                hitPad = null;
+                hittingPad = false;
+            }
+            
+            Destroy(pad.gameObject);
+        }
+        
+        teleportPads.Clear();
     }
 }

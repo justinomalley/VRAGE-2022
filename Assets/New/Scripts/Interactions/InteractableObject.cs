@@ -6,7 +6,7 @@ public abstract class InteractableObject : MonoBehaviour {
     private bool leftTouching, rightTouching;
 
     [SerializeField]
-    protected bool grabbable, interactable;
+    protected bool interactable;
 
     // Use virtual methods instead of abstract so subclasses can just implement what they need.
     
@@ -15,8 +15,16 @@ public abstract class InteractableObject : MonoBehaviour {
     protected virtual void Untouch() { }
     
     public virtual void Interact() { }
-    
+
+    private void OnCollisionEnter(Collision other) {
+        CheckForTouch(other.gameObject);
+    }
+
     private void OnTriggerEnter(Collider other) {
+        CheckForTouch(other.gameObject);
+    }
+
+    private void CheckForTouch(GameObject other) {
         if (!other.CompareTag("Controller")) {
             return;
         }
@@ -45,8 +53,16 @@ public abstract class InteractableObject : MonoBehaviour {
             Touch();
         }
     }
-
+    
     private void OnTriggerExit(Collider other) {
+        CheckForUntouch(other.gameObject);
+    }
+
+    private void OnCollisionExit(Collision other) {
+        CheckForUntouch(other.gameObject);
+    }
+
+    private void CheckForUntouch(GameObject other) {
         if (!other.CompareTag("Controller")) {
             return;
         }

@@ -1,9 +1,10 @@
+using System;
 using UnityEngine;
 
-[RequireComponent(typeof(AnimateMaterialAlpha))]
+[RequireComponent(typeof(AnimateMaterialColor))]
 public class MaterialColorFader : Fader<Color> {
     [SerializeField] 
-    private Color startAlpha, endAlpha;
+    private Color startColor, endColor;
     
     [SerializeField]
     private float fadeDuration;
@@ -14,6 +15,6 @@ public class MaterialColorFader : Fader<Color> {
     
     private void Start() {
         materialAnimator = GetComponent<AnimateMaterialColor>();
-        Initialize(materialAnimator, animProgressEvaluator, startAlpha, endAlpha, fadeDuration);
+        Initialize(materialAnimator, animProgressEvaluator, startColor, endColor, fadeDuration);
     }
 }
