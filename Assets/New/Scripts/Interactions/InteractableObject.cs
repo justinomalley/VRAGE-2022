@@ -17,10 +17,12 @@ public abstract class InteractableObject : MonoBehaviour {
     public virtual void Interact() { }
 
     private void OnCollisionEnter(Collision other) {
+        Debug.LogError("ayo");
         CheckForTouch(other.gameObject);
     }
 
     private void OnTriggerEnter(Collider other) {
+        Debug.LogError("oya");
         CheckForTouch(other.gameObject);
     }
 

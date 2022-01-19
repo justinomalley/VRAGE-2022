@@ -662,7 +662,7 @@ GameObject:
   - component: {fileID: 7577846002928637516}
   - component: {fileID: 7577846002928637519}
   - component: {fileID: 7577846002928637518}
-  - component: {fileID: 40602822}
+  - component: {fileID: 4422975918681415382}
   - component: {fileID: 7577846002928637517}
   m_Layer: 0
   m_Name: Cube
@@ -734,7 +734,7 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!54 &40602822
+--- !u!54 &4422975918681415382
 Rigidbody:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -749,7 +749,7 @@ Rigidbody:
   m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 0
+  m_CollisionDetection: 3
 --- !u!65 &7577846002928637517
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -758,7 +758,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7577846002928634291}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
@@ -938,7 +938,7 @@ GameObject:
   - component: {fileID: 7577846003450478807}
   - component: {fileID: 7577846003450478802}
   - component: {fileID: 7577846003450478801}
-  - component: {fileID: 1366592853}
+  - component: {fileID: 918669582577873813}
   - component: {fileID: 7577846003450478800}
   m_Layer: 0
   m_Name: Cube
@@ -1010,7 +1010,7 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!54 &1366592853
+--- !u!54 &918669582577873813
 Rigidbody:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1025,7 +1025,7 @@ Rigidbody:
   m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 0
+  m_CollisionDetection: 3
 --- !u!65 &7577846003450478800
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1034,7 +1034,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7577846003450478806}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
