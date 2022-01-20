@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -54,12 +55,19 @@ public class TeleportPadManager : MonoBehaviour {
         if (!teleportPadsActive) {
             return;
         }
-        foreach (var pad in teleportPads) {
-            if (pad.IsCurrentPad()) {
-                continue;
+
+        try {
+            foreach (var pad in teleportPads) {
+                if (pad.IsCurrentPad()) {
+                    continue;
+                }
+
+                pad.gameObject.SetActive(true);
+                pad.FadeIn(instance.unhighlightedAlpha);
             }
-            pad.gameObject.SetActive(true);
-            pad.FadeIn(instance.unhighlightedAlpha);
+        } catch(InvalidOperationException) {
+            // Just in case the collection was modified 
+            EnableTeleportPads();
         }
     }
 
@@ -81,6 +89,10 @@ public class TeleportPadManager : MonoBehaviour {
         if (hittingPad && hitPad == pad || pointerInLeftHand != isLeftHand) {
             return;
         }
+
+        if (hittingPad) {
+            StoppedHittingPad(isLeftHand);
+        }
         
         pointerInLeftHand = isLeftHand;
         hittingPad = true;
@@ -93,7 +105,7 @@ public class TeleportPadManager : MonoBehaviour {
             return;
         }
         
-        hitPad.Unhighlight();
+        hitPad?.Unhighlight();
         
         hitPad = null;
         hittingPad = false;
@@ -127,11 +139,20 @@ public class TeleportPadManager : MonoBehaviour {
         }
         
         DisableTeleportPads(false);
-        
+
+        TeleportToPad();
+    }
+
+    private static void TeleportToPad() {
         _cameraRigTransform.position = hitPad.transform.position;
         currentPad.UnsetCurrentPad();
         hitPad.SetCurrentPad();
         currentPad = hitPad;
+        hitPad = null;
+
+        if (currentPad is ElevatorTeleportPad elePad) {
+            elePad.EnteredElevator();
+        }
     }
 
     public static void AddTeleportPad(TeleportPad pad) {
@@ -154,7 +175,7 @@ public class TeleportPadManager : MonoBehaviour {
 
     public static void DestroyAllPads() {
         foreach (var pad in teleportPads) {
-            if (pad.isElevatorPad) {
+            if (pad is ElevatorTeleportPad) {
                 continue;
             }
 

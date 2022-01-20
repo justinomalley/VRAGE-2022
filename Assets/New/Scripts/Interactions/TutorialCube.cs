@@ -7,19 +7,15 @@ public class TutorialCube : InteractableObject {
 
     [SerializeField]
     private AnimationCurve rotateCurve;
-    
-    [SerializeField]
-    private Color highlightedColor;
 
-    private bool highlighted, triggered;
-
-    private Material material;
+    private bool triggered;
 
     private TransformScaleFader scaleFader;
 
     private TutorialCubeRotateSpeedFader rotateFader;
     
-    private void Awake() {
+    protected override void Awake() {
+        base.Awake();
         material = GetComponentInChildren<Renderer>().material;
         scaleFader = GetComponentInChildren<TransformScaleFader>();
         rotateFader = GetComponentInChildren<TutorialCubeRotateSpeedFader>();
@@ -34,7 +30,6 @@ public class TutorialCube : InteractableObject {
         if (highlighted || triggered) {
             return;
         }
-        highlighted = true;
         Highlight();
     }
 
@@ -60,14 +55,6 @@ public class TutorialCube : InteractableObject {
     private void OpenLobby() {
         Destroy(gameObject);
         App.EnterLobby();
-    }
-    
-    private void Highlight() {
-        material.color = highlightedColor;
-    }
-
-    private void Unhighlight() {
-        material.color = Color.white;
     }
 
     public float GetRotateSpeed() {

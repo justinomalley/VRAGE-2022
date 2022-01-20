@@ -169,7 +169,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aa7ffd7bd4502b04a806888f91da236d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  interactable: 0
+  highlightedColor: {r: 1, g: 0.73333335, b: 0, a: 1}
   rotateSpeed: 100
   rotateCurve:
     serializedVersion: 2
@@ -195,7 +195,6 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  highlightedColor: {r: 1, g: 0.73333335, b: 0, a: 1}
 --- !u!65 &17330530
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -255,6 +254,30 @@ PrefabInstance:
     - target: {fileID: 100010, guid: 757fa85183d9646b5a5ba4a20ac9c081, type: 3}
       propertyPath: m_Name
       value: TutorialOnlyLogo
+      objectReference: {fileID: 0}
+    - target: {fileID: 400004, guid: 757fa85183d9646b5a5ba4a20ac9c081, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.0039
+      objectReference: {fileID: 0}
+    - target: {fileID: 400004, guid: 757fa85183d9646b5a5ba4a20ac9c081, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.0079
+      objectReference: {fileID: 0}
+    - target: {fileID: 400006, guid: 757fa85183d9646b5a5ba4a20ac9c081, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.0037
+      objectReference: {fileID: 0}
+    - target: {fileID: 400006, guid: 757fa85183d9646b5a5ba4a20ac9c081, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.0797
+      objectReference: {fileID: 0}
+    - target: {fileID: 400008, guid: 757fa85183d9646b5a5ba4a20ac9c081, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.0039
+      objectReference: {fileID: 0}
+    - target: {fileID: 400008, guid: 757fa85183d9646b5a5ba4a20ac9c081, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.0443
       objectReference: {fileID: 0}
     - target: {fileID: 400010, guid: 757fa85183d9646b5a5ba4a20ac9c081, type: 3}
       propertyPath: m_RootOrder
@@ -376,6 +399,25 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7577846002541204393, guid: 67958c4ad40e3b9458211c01475267f0, type: 3}
   m_PrefabInstance: {fileID: 7577846003330983500}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1056687202 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3182992450095832596, guid: 78316d143cbd3a84b8b3a439d0a5a443, type: 3}
+  m_PrefabInstance: {fileID: 6203258378177951158}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1056687210
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1056687202}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f86e3928e927bdd478ca2377e3e791e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isCurrentPad: 0
+  doors: {fileID: 0}
 --- !u!1 &1405786277
 GameObject:
   m_ObjectHideFlags: 0
@@ -387,7 +429,7 @@ GameObject:
   - component: {fileID: 1405786278}
   - component: {fileID: 1405786279}
   m_Layer: 0
-  m_Name: TutorialTrigger
+  m_Name: AppStarter
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -428,6 +470,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   leftGameObject: {fileID: 734623498}
   rightGameObject: {fileID: 1799068918}
+  debug: 1
 --- !u!1 &1624464226
 GameObject:
   m_ObjectHideFlags: 0
@@ -538,6 +581,30 @@ PrefabInstance:
     - target: {fileID: 100010, guid: 757fa85183d9646b5a5ba4a20ac9c081, type: 3}
       propertyPath: m_Name
       value: LobbyLogo
+      objectReference: {fileID: 0}
+    - target: {fileID: 400004, guid: 757fa85183d9646b5a5ba4a20ac9c081, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.0039
+      objectReference: {fileID: 0}
+    - target: {fileID: 400004, guid: 757fa85183d9646b5a5ba4a20ac9c081, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.0086
+      objectReference: {fileID: 0}
+    - target: {fileID: 400006, guid: 757fa85183d9646b5a5ba4a20ac9c081, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.0037
+      objectReference: {fileID: 0}
+    - target: {fileID: 400006, guid: 757fa85183d9646b5a5ba4a20ac9c081, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.0804
+      objectReference: {fileID: 0}
+    - target: {fileID: 400008, guid: 757fa85183d9646b5a5ba4a20ac9c081, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.0039
+      objectReference: {fileID: 0}
+    - target: {fileID: 400008, guid: 757fa85183d9646b5a5ba4a20ac9c081, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.045
       objectReference: {fileID: 0}
     - target: {fileID: 400010, guid: 757fa85183d9646b5a5ba4a20ac9c081, type: 3}
       propertyPath: m_RootOrder
@@ -682,7 +749,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1920257240}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -0.01}
+  m_LocalPosition: {x: 0, y: 0, z: -0.05}
   m_LocalScale: {x: 0.625, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1405786278}
@@ -728,7 +795,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Press both triggers to begin VRAGE.
+  m_text: Press both triggers to begin.
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 9ee4651dc8eebe8429984daea0cca32a, type: 2}
   m_sharedMaterial: {fileID: 3258223628574112153, guid: 9ee4651dc8eebe8429984daea0cca32a, type: 2}

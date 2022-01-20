@@ -4,14 +4,12 @@ public class TeleportPad : MonoBehaviour {
 
     [SerializeField] 
     private bool isCurrentPad;
-    
-    public bool isElevatorPad { get; private set; }
 
     private RendererAlphaFader fader;
 
     private float highlightedAlpha, unhighlightedAlpha;
 
-    private void Awake() {
+    protected void Awake() {
         fader = GetComponent<RendererAlphaFader>();
         TeleportPadManager.AddTeleportPad(this);
     }

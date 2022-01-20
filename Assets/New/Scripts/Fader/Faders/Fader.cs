@@ -18,12 +18,17 @@ public class Fader<T> : MonoBehaviour {
 
     private bool initialized = true;
 
+    private bool durationOverriden;
+
     protected void Initialize(IAnimatableComponent<T> comp, IAnimatableProperty<T> prop, T start, T end, float dur) {
         component = comp;
         property = prop;
         startValue = start;
         endValue = end;
-        duration = dur;
+        if (!durationOverriden) {
+            duration = dur;
+        }
+        
         initialized = true;
     }
 
@@ -67,6 +72,11 @@ public class Fader<T> : MonoBehaviour {
     public void SetValue(T value) {
         currentValue = value;
         component.Set(currentValue);
+    }
+
+    public void SetDuration(float dur) {
+        durationOverriden = true;
+        duration = dur;
     }
 
     public void AddCallback(UnityAction callback) {

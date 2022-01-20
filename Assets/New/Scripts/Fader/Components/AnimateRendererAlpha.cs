@@ -25,6 +25,9 @@ public class AnimateRendererAlpha : MonoBehaviour, IAnimatableComponent<float> {
     }
 
     public void Set(float property) {
+        if (_propBlock == null) {
+            return;
+        }
         var currColor = _propBlock.GetColor(ColorProperty);
         _propBlock.SetColor(ColorProperty, new Color(currColor.r, currColor.g, currColor.b, property));
         targetRenderer.SetPropertyBlock(_propBlock);

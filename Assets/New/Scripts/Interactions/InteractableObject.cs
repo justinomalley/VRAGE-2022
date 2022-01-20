@@ -5,8 +5,14 @@ public abstract class InteractableObject : MonoBehaviour {
     
     private bool leftTouching, rightTouching;
 
+    protected bool highlighted;
+
+    protected Material material;
+    
     [SerializeField]
-    protected bool interactable;
+    private Color highlightedColor;
+    
+    protected Color origColor;
 
     // Use virtual methods instead of abstract so subclasses can just implement what they need.
     
@@ -15,6 +21,11 @@ public abstract class InteractableObject : MonoBehaviour {
     protected virtual void Untouch() { }
     
     public virtual void Interact() { }
+
+    protected virtual void Awake() {
+        material = GetComponentInChildren<Renderer>().material;
+        origColor = material.color;
+    }
 
     private void OnCollisionEnter(Collision other) {
         CheckForTouch(other.gameObject);
@@ -95,5 +106,23 @@ public abstract class InteractableObject : MonoBehaviour {
         if (!leftTouching && !rightTouching) {
             Untouch();
         }
+    }
+    
+    protected void Highlight() {
+        highlighted = true;
+        material.color = highlightedColor;
+    }
+
+    protected void Unhighlight() {
+        highlighted = false;
+        material.color = origColor;
+    }
+
+    protected bool IsTouched() {
+        return leftTouching || rightTouching;
+    }
+    
+    private void OnApplicationQuit() {
+        material.color = origColor;
     }
 }
