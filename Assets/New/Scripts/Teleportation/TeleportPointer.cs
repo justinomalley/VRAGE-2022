@@ -23,7 +23,7 @@ public class TeleportPointer : MonoBehaviour {
     }
     
     private void Update() {
-        if (!controller.ThumbstickForward()) {
+        if (!controller.TeleportButtonPressed()) {
             if (!activePointer) {
                 return;
             }

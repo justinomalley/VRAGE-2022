@@ -498,7 +498,7 @@ MonoBehaviour:
   elevatorPrefab: {fileID: 6125086290512539621, guid: 95627dade8bb06f4284c2c1ed3df1dd9, type: 3}
   galleries:
   - {fileID: 2365319294467425935, guid: 2e6ca4838fa687d48bcbcda8e0e12966, type: 3}
-  - {fileID: 877107046745208670, guid: 95faf05e41ca29043861497af13c33b0, type: 3}
+  - {fileID: 6548068432974946478, guid: 95faf05e41ca29043861497af13c33b0, type: 3}
 --- !u!1001 &1796826459
 PrefabInstance:
   m_ObjectHideFlags: 0

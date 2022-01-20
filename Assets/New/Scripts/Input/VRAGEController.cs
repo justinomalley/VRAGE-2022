@@ -51,11 +51,11 @@ public class VRAGEController : MonoBehaviour {
         touchedObject.Interact();
     }
 
-    public bool TriggerPressed() {
+    public bool InteractButtonPressed() {
         return controller.TriggerPressed();
     }
 
-    public bool ThumbstickForward() {
+    public bool TeleportButtonPressed() {
         return controller.ThumbstickForward();
     }
 }

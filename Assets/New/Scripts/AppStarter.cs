@@ -43,7 +43,7 @@ public class AppStarter : MonoBehaviour {
             return;
         }
 
-        if (!left.TriggerPressed() || !right.TriggerPressed()) {
+        if (!left.InteractButtonPressed() || !right.InteractButtonPressed()) {
             return;
         }
         
