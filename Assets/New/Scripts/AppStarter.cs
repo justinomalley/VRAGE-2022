@@ -8,7 +8,7 @@ public class AppStarter : MonoBehaviour {
     [SerializeField]
     private GameObject leftObj, rightObj;
     
-    private IXRController left, right;
+    private VRAGEController left, right;
     
     // `debug` skips the need to press both triggers to begin
     [SerializeField]
@@ -21,8 +21,8 @@ public class AppStarter : MonoBehaviour {
     private bool triggered;
     
     private void Awake() {
-        left = leftObj.GetComponent<IXRController>();
-        right = rightObj.GetComponent<IXRController>();
+        left = leftObj.GetComponent<VRAGEController>();
+        right = rightObj.GetComponent<VRAGEController>();
         backgroundFader = transform.Find("Background").GetComponent<MaterialAlphaFader>();
         textFader = transform.Find("Text").GetComponent<TextAlphaFader>();
     }

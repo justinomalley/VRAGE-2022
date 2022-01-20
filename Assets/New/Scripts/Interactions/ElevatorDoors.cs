@@ -1,10 +1,14 @@
 using UnityEngine;
 using UnityEngine.Events;
 
+/// <summary>
+/// ElevatorDoors manages the animation of the elevator doors and how they interact with ElevatorOpenButtons.
+/// </summary>
 public class ElevatorDoors : MonoBehaviour {
 
     private AudioSource audioSource;
 
+    //`positionFaders` is used to animate the positions of the doors.
     private TransformPositionFader[] positionFaders;
 
     private Vector3 doorOneOpen, doorTwoOpen, doorOneClosed, doorTwoClosed;

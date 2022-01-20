@@ -2,7 +2,6 @@ using System;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.InputSystem;
-using UnityEngine.Serialization;
 
 /// <summary>
 /// GenericXRButton tracks the pressed/unpressed status of a button using the new Unity Input System.

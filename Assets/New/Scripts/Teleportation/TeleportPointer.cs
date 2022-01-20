@@ -1,7 +1,7 @@
 using UnityEngine;
 
 public class TeleportPointer : MonoBehaviour {
-    private IXRController controller;
+    private VRAGEController controller;
     
     private TeleportPad currentPad;
 
@@ -15,7 +15,7 @@ public class TeleportPointer : MonoBehaviour {
     private bool debug;
     
     private void Awake() {
-        controller = GetComponent<IXRController>();
+        controller = GetComponent<VRAGEController>();
         lineRenderer = GetComponentInChildren<LineRenderer>();
         var positions = new Vector3[2];
         lineRenderer.GetPositions(positions);

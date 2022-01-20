@@ -49,7 +49,7 @@ public abstract class InteractableObject : MonoBehaviour {
         
         controller.StartTouching(this);
         
-        switch (controller.ControllerOrientation()) {
+        switch (controller.Hand()) {
             case Hand.Left:
                 leftTouching = true;
                 break;

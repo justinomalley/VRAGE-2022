@@ -1,6 +1,9 @@
-using System;
 using UnityEngine;
 
+/// <summary>
+/// VRAGEController defines the inputs used by VRAGE and retrieves
+/// them from an implementor of the IXRController interface.
+/// </summary>
 public class VRAGEController : MonoBehaviour {
     private IXRController controller;
 
@@ -10,7 +13,7 @@ public class VRAGEController : MonoBehaviour {
         controller = GetComponent<IXRController>();
     }
 
-    public Hand ControllerOrientation() {
+    public Hand Hand() {
         return controller.Hand();
     }
 
@@ -46,5 +49,13 @@ public class VRAGEController : MonoBehaviour {
         
         triggerPressed = true;
         touchedObject.Interact();
+    }
+
+    public bool TriggerPressed() {
+        return controller.TriggerPressed();
+    }
+
+    public bool ThumbstickForward() {
+        return controller.ThumbstickForward();
     }
 }
