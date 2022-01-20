@@ -22,12 +22,20 @@ public class ElevatorDoors : MonoBehaviour {
     private AudioClip openSound, closeSound;
 
     public UnityEvent doorsOpenedEvent { get; } = new UnityEvent();
+    public UnityEvent doorsOpeningEvent { get; } = new UnityEvent();
     public UnityEvent doorsClosedEvent { get; } = new UnityEvent();
+    public UnityEvent doorsClosingEvent { get; } = new UnityEvent();
 
     private bool doorsOpening, doorsClosing;
+    
+    public static float doorOpenAnimationDuration { get; private set; }
+    public static float doorCloseAnimationDuration { get; private set; }
 
     private void Awake() {
         audioSource = GetComponent<AudioSource>();
+        doorOpenAnimationDuration = openSound.length;
+        doorCloseAnimationDuration = closeSound.length;
+        
         positionFaders = GetComponentsInChildren<TransformPositionFader>();
 
         doorOneClosed = transform.Find("door1").localPosition;
@@ -38,6 +46,8 @@ public class ElevatorDoors : MonoBehaviour {
         foreach (var fader in positionFaders) {
             fader.SetAnimationCurve(curve);
         }
+        
+        GalleryLoader.InitializeSoundFadeForDoors(this);
     }
 
     public void Open() {
@@ -52,10 +62,14 @@ public class ElevatorDoors : MonoBehaviour {
         positionFaders[0].SetDuration(openSound.length);
         positionFaders[1].SetDuration(openSound.length);
         
-        positionFaders[0].Fade(doorOneOpen, RunDoorOpenedCallbacks);
-        positionFaders[1].Fade(doorTwoOpen);
-
+        positionFaders[0].Fade(doorOneOpen);
+        positionFaders[1].Fade(doorTwoOpen, () => {
+            doorsOpening = false;
+            doorsOpenedEvent.Invoke();
+        });
+        
         doorsOpening = true;
+        doorsOpeningEvent.Invoke();
     }
 
     public void Close() {
@@ -70,19 +84,13 @@ public class ElevatorDoors : MonoBehaviour {
         positionFaders[0].SetDuration(closeSound.length);
         positionFaders[1].SetDuration(closeSound.length);
         
-        positionFaders[0].Fade(doorOneClosed, RunDoorClosedCallbacks);
-        positionFaders[1].Fade(doorTwoClosed);
-
+        positionFaders[0].Fade(doorOneClosed);
+        positionFaders[1].Fade(doorTwoClosed, () => {
+            doorsClosing = false;
+            doorsClosedEvent.Invoke();
+        });
+        
         doorsOpening = false;
-    }
-    
-    private void RunDoorOpenedCallbacks() {
-        doorsOpening = false;
-        doorsOpenedEvent.Invoke();
-    }
-    
-    private void RunDoorClosedCallbacks() {
-        doorsClosing = false;
-        doorsClosedEvent.Invoke();
+        doorsClosingEvent.Invoke();
     }
 }

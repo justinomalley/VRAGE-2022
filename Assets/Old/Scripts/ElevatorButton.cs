@@ -2,7 +2,7 @@
 
 public class ElevatorButton : InteractableObject {
     [SerializeField]
-    private GalleryLoader.Gallery gallery;
+    private GalleryLoader.Room room;
     
     private AudioSource src;
 
@@ -32,7 +32,7 @@ public class ElevatorButton : InteractableObject {
             src.Play();
         }
         
-        GalleryLoader.SetGalleryRoom(gallery);
+        GalleryLoader.SetGalleryRoom(room);
     }
 }
 

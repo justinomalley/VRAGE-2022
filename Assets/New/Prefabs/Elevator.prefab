@@ -968,6 +968,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6125086290512539622}
+  - component: {fileID: 1855976096}
   m_Layer: 8
   m_Name: Elevator
   m_TagString: Untagged
@@ -999,6 +1000,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
+--- !u!114 &1855976096
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6125086290512539621}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 12a5eba3a5a962640a41d37225730571, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6125086290537088776
 GameObject:
   m_ObjectHideFlags: 0
@@ -1674,6 +1687,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6125086290684874760}
     m_Modifications:
+    - target: {fileID: 2035281491655049160, guid: a1e72a0327fea974495cebe789a3908a, type: 3}
+      propertyPath: room
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2035281491655049160, guid: a1e72a0327fea974495cebe789a3908a, type: 3}
       propertyPath: gallery
       value: 1

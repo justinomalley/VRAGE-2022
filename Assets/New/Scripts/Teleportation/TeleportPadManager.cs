@@ -146,18 +146,26 @@ public class TeleportPadManager : MonoBehaviour {
     }
 
     private static void TeleportToPad() {
+        // We have to wait to trigger ExitElevator until we've set the new pad to the current
+        // one, otherwise other things will think we're entering the elevator when we're
+        // actually leaving it.
+        ElevatorTeleportPad elePad = null;
         if (currentPad is ElevatorTeleportPad elePad1) {
-            elePad1.ExitedElevator();
+            elePad = elePad1;
         }
         
         _cameraRigTransform.position = hitPad.transform.position;
-        currentPad.UnsetCurrentPad();
+        currentPad?.UnsetCurrentPad();
         hitPad.SetCurrentPad();
         currentPad = hitPad;
         hitPad = null;
 
         if (currentPad is ElevatorTeleportPad elePad2) {
             elePad2.EnteredElevator();
+        }
+
+        if (elePad != null) {
+            elePad.ExitedElevator();
         }
     }
 
@@ -171,12 +179,17 @@ public class TeleportPadManager : MonoBehaviour {
         pad.GetComponent<Renderer>().SetPropertyBlock(_propBlock);
 
         if (pad.IsCurrentPad()) {
-            currentPad = pad;
+            ForceTeleport(pad);
         }
             
         pad.SetHighlightValues(instance.highlightedAlpha, instance.unhighlightedAlpha);
         pad.transform.SetParent(instance.transform);
         pad.gameObject.SetActive(false);
+    }
+
+    public static void ForceTeleport(TeleportPad pad) {
+        hitPad = pad;
+        TeleportToPad();
     }
 
     public static void DestroyAllPads() {
