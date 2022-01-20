@@ -15,8 +15,10 @@ public class ElevatorDoors : MonoBehaviour {
     [SerializeField]
     private AudioClip openSound, closeSound;
 
-    public UnityEvent doorsOpened { get; } = new UnityEvent();
-    public UnityEvent doorsClosed { get; } = new UnityEvent();
+    public UnityEvent doorsOpenedEvent { get; } = new UnityEvent();
+    public UnityEvent doorsClosedEvent { get; } = new UnityEvent();
+
+    private bool doorsOpening, doorsClosing;
 
     private void Awake() {
         audioSource = GetComponent<AudioSource>();
@@ -33,6 +35,10 @@ public class ElevatorDoors : MonoBehaviour {
     }
 
     public void Open() {
+        if (doorsOpening) {
+            return;
+        }
+        
         audioSource.Stop();
         audioSource.clip = openSound;
         audioSource.Play();
@@ -43,9 +49,15 @@ public class ElevatorDoors : MonoBehaviour {
         positionFaders[0].Fade(doorOneOpen);
         positionFaders[1].Fade(doorTwoOpen);
         positionFaders[0].AddCallback(RunDoorOpenedCallbacks);
+
+        doorsOpening = true;
     }
 
     public void Close() {
+        if (doorsClosing) {
+            return;
+        }
+        
         audioSource.Stop();
         audioSource.clip = closeSound;
         audioSource.Play();
@@ -56,13 +68,17 @@ public class ElevatorDoors : MonoBehaviour {
         positionFaders[0].Fade(doorOneClosed);
         positionFaders[1].Fade(doorTwoClosed);
         positionFaders[0].AddCallback(RunDoorClosedCallbacks);
+
+        doorsOpening = false;
     }
 
     private void RunDoorOpenedCallbacks() {
-        doorsOpened.Invoke();
+        doorsOpening = false;
+        doorsOpenedEvent.Invoke();
     }
     
     private void RunDoorClosedCallbacks() {
-        doorsClosed.Invoke();
+        doorsClosing = false;
+        doorsClosedEvent.Invoke();
     }
 }

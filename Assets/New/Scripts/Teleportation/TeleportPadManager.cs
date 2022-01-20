@@ -144,14 +144,18 @@ public class TeleportPadManager : MonoBehaviour {
     }
 
     private static void TeleportToPad() {
+        if (currentPad is ElevatorTeleportPad elePad1) {
+            elePad1.ExitedElevator();
+        }
+        
         _cameraRigTransform.position = hitPad.transform.position;
         currentPad.UnsetCurrentPad();
         hitPad.SetCurrentPad();
         currentPad = hitPad;
         hitPad = null;
 
-        if (currentPad is ElevatorTeleportPad elePad) {
-            elePad.EnteredElevator();
+        if (currentPad is ElevatorTeleportPad elePad2) {
+            elePad2.EnteredElevator();
         }
     }
 

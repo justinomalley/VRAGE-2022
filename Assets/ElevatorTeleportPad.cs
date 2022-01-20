@@ -7,4 +7,8 @@ public class ElevatorTeleportPad : TeleportPad {
     public void EnteredElevator() {
         doors.Close();
     }
+    
+    public void ExitedElevator() {
+        doors.Close();
+    }
 }

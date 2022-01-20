@@ -1,14 +1,18 @@
-﻿public class ElevatorOpenButton : InteractableObject {
+﻿using UnityEngine;
 
+public class ElevatorOpenButton : InteractableObject {
+    [SerializeField]
     private ElevatorDoors doors;
 
     private bool doorsMoving, doorsOpen;
 
+    [SerializeField]
+    private ElevatorOpenButton other;
+
     protected override void Awake() {
         base.Awake();
-        doors = transform.parent.GetComponentInChildren<ElevatorDoors>();
-        doors.doorsOpened.AddListener(DoorsOpened);
-        doors.doorsClosed.AddListener(DoorsClosed);
+        doors.doorsOpenedEvent.AddListener(DoorsOpened);
+        doors.doorsClosedEvent.AddListener(DoorsClosed);
     }
 
     protected override void Touch() {
@@ -31,8 +35,8 @@
         if (doorsMoving) {
             return;
         }
-
-        doorsMoving = true;
+        
+        other.OpenedElsewhere();
 
         if (doorsOpen) {
             CloseDoors();
@@ -41,11 +45,18 @@
         }
     }
 
+    public void OpenedElsewhere() {
+        doorsMoving = true;
+        Highlight();
+    }
+
     private void OpenDoors() {
+        doorsMoving = true;
         doors.Open();
     }
 
     private void CloseDoors() {
+        doorsMoving = true;
         doors.Close();
     }
 
