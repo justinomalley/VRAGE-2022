@@ -11,11 +11,13 @@ public class ElevatorDoors : MonoBehaviour {
     //`positionFaders` is used to animate the positions of the doors.
     private TransformPositionFader[] positionFaders;
 
+    // Vectors representing the positions of both doors while they are opened or closed.
     private Vector3 doorOneOpen, doorTwoOpen, doorOneClosed, doorTwoClosed;
 
+    // `curve` is applied to the door opening animation to make it a bit smoother.
     [SerializeField]
     private AnimationCurve curve;
-
+    
     [SerializeField]
     private AudioClip openSound, closeSound;
 
@@ -73,7 +75,7 @@ public class ElevatorDoors : MonoBehaviour {
 
         doorsOpening = false;
     }
-
+    
     private void RunDoorOpenedCallbacks() {
         doorsOpening = false;
         doorsOpenedEvent.Invoke();

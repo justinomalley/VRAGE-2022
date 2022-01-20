@@ -1,5 +1,11 @@
-﻿using UnityEngine;
+﻿using TMPro;
+using UnityEngine;
 
+/// <summary>
+/// ElevatorOpenButton is a button that manages the elevator doors. By extension, this script
+/// triggers the loading of galleries in `GalleryLoader` when opening the elevator door from
+/// the inside after selecting a different floor.
+/// </summary>
 public class ElevatorOpenButton : InteractableObject {
     [SerializeField]
     private ElevatorDoors doors;
@@ -9,6 +15,8 @@ public class ElevatorOpenButton : InteractableObject {
 
     [SerializeField]
     private bool isInsideButton;
+
+    private TextMeshPro tmp;
     
     private bool doorsMoving, doorsOpen;
 
@@ -16,6 +24,7 @@ public class ElevatorOpenButton : InteractableObject {
         base.Awake();
         doors.doorsOpenedEvent.AddListener(DoorsOpened);
         doors.doorsClosedEvent.AddListener(DoorsClosed);
+        tmp = GetComponentInChildren<TextMeshPro>();
     }
 
     protected override void Touch() {
@@ -39,6 +48,8 @@ public class ElevatorOpenButton : InteractableObject {
             return;
         }
         
+        tmp.gameObject.SetActive(false);
+        
         other.OpenedElsewhere();
 
         if (doorsOpen) {
@@ -54,6 +65,9 @@ public class ElevatorOpenButton : InteractableObject {
         
     }
 
+    /// <summary>
+    /// OpenedElsewhere highlights this elevator button if the other one was pressed.
+    /// </summary>
     private void OpenedElsewhere() {
         doorsMoving = true;
         Highlight();
@@ -68,8 +82,13 @@ public class ElevatorOpenButton : InteractableObject {
         doorsMoving = true;
         doors.Close();
     }
-
+    
+    /// <summary>
+    /// DoorsOpened is triggered by an event in ElevatorDoors when the doors are fully opened.
+    /// </summary>
     private void DoorsOpened() {
+        tmp.text = "CLOSE";
+        tmp.fontSize = 0.16f;
         if (!IsTouched()) {
             Unhighlight();
         }
@@ -78,13 +97,30 @@ public class ElevatorOpenButton : InteractableObject {
         doorsOpen = true;
     }
     
+    /// <summary>
+    /// DoorsClosed is triggered by an event in ElevatorDoors when the doors are fully closed.
+    /// </summary>
     private void DoorsClosed() {
+        tmp.text = "OPEN";
+        tmp.fontSize = 0.2f;
         if (!IsTouched()) {
             Unhighlight();
         }
         
         doorsMoving = false;
         doorsOpen = false;
+    }
+    
+    protected override void Highlight() {
+        base.Highlight();
+        // Deactivate "OPEN" text when highlighting button
+        tmp.gameObject.SetActive(false);
+    }
+
+    protected override void Unhighlight() {
+        base.Unhighlight();
+        // Activate "OPEN" text when unhighlighting button
+        tmp.gameObject.SetActive(true);
     }
     
     private void OnApplicationQuit() {

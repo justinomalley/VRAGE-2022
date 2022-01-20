@@ -58,6 +58,7 @@ public class GalleryLoader : MonoBehaviour {
         var lobbyLogo = GameObject.Find("LobbyLogo");
         lobbyLogo.transform.SetParent(galleryInstance.transform);
         lobbyLogo.GetComponent<MaterialColorFader>().Fade();
+        galleryInstance.GetComponent<Lobby>().DisableLobbyLogo();
     }
 
     /// <summary>
