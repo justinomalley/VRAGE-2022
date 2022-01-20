@@ -46,9 +46,8 @@ public class ElevatorDoors : MonoBehaviour {
         positionFaders[0].SetDuration(openSound.length);
         positionFaders[1].SetDuration(openSound.length);
         
-        positionFaders[0].Fade(doorOneOpen);
+        positionFaders[0].Fade(doorOneOpen, RunDoorOpenedCallbacks);
         positionFaders[1].Fade(doorTwoOpen);
-        positionFaders[0].AddCallback(RunDoorOpenedCallbacks);
 
         doorsOpening = true;
     }
@@ -65,9 +64,8 @@ public class ElevatorDoors : MonoBehaviour {
         positionFaders[0].SetDuration(closeSound.length);
         positionFaders[1].SetDuration(closeSound.length);
         
-        positionFaders[0].Fade(doorOneClosed);
+        positionFaders[0].Fade(doorOneClosed, RunDoorClosedCallbacks);
         positionFaders[1].Fade(doorTwoClosed);
-        positionFaders[0].AddCallback(RunDoorClosedCallbacks);
 
         doorsOpening = false;
     }

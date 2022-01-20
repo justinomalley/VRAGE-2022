@@ -347,6 +347,8 @@ GameObject:
   - component: {fileID: 7577846002541204393}
   - component: {fileID: 7577846002541204395}
   - component: {fileID: 7577846002541204388}
+  - component: {fileID: 1766287533}
+  - component: {fileID: 1766287534}
   m_Layer: 0
   m_Name: VRAGECameraRig
   m_TagString: Untagged
@@ -404,6 +406,37 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_ActionAsset: {fileID: -944628639613478452, guid: e0ca4504471ca124088e1e2cfe6804ae, type: 3}
+--- !u!114 &1766287533
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7577846002541204392}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b90eaae8ee7f6bf46be1c8ad060bd48d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ActionAsset: {fileID: -944628639613478452, guid: adbc485aed8230d43a186661eb4205fa, type: 3}
+--- !u!114 &1766287534
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7577846002541204392}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 95e4d2dca53e4704eb40f2ad1d0b1fdb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  forwardActionRef: {fileID: -5056396035135579058, guid: adbc485aed8230d43a186661eb4205fa, type: 3}
+  backwardActionRef: {fileID: -5314185323010463935, guid: adbc485aed8230d43a186661eb4205fa, type: 3}
+  leftActionRef: {fileID: 6094658338185063695, guid: adbc485aed8230d43a186661eb4205fa, type: 3}
+  rightActionRef: {fileID: 1291763181620107642, guid: adbc485aed8230d43a186661eb4205fa, type: 3}
+  moveSpeed: 0.01
+  debugControlsActive: 0
 --- !u!1 &7577846002644749117
 GameObject:
   m_ObjectHideFlags: 0
@@ -612,7 +645,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7fe7f65f7165e464686ba4b689a6ef72, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_ActionReference: {fileID: 6986180202050166755, guid: e0ca4504471ca124088e1e2cfe6804ae, type: 3}
+  actionReference: {fileID: 2526168894431210536, guid: e0ca4504471ca124088e1e2cfe6804ae, type: 3}
 --- !u!114 &7577846002882539928
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -625,7 +658,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d22dd4b1fb532e45ac39d8a8c2c3858, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_ActionReference: {fileID: 7596212294181904713, guid: e0ca4504471ca124088e1e2cfe6804ae, type: 3}
+  actionReference: {fileID: 7596212294181904713, guid: e0ca4504471ca124088e1e2cfe6804ae, type: 3}
 --- !u!114 &734623504
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -888,7 +921,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7fe7f65f7165e464686ba4b689a6ef72, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_ActionReference: {fileID: 6454596279149084813, guid: e0ca4504471ca124088e1e2cfe6804ae, type: 3}
+  actionReference: {fileID: -5684558904543120851, guid: e0ca4504471ca124088e1e2cfe6804ae, type: 3}
 --- !u!114 &7577846003044499598
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -901,7 +934,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d22dd4b1fb532e45ac39d8a8c2c3858, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_ActionReference: {fileID: 3396702884570900202, guid: e0ca4504471ca124088e1e2cfe6804ae, type: 3}
+  actionReference: {fileID: 3396702884570900202, guid: e0ca4504471ca124088e1e2cfe6804ae, type: 3}
 --- !u!114 &1799068924
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -3,11 +3,14 @@
 public class ElevatorOpenButton : InteractableObject {
     [SerializeField]
     private ElevatorDoors doors;
-
-    private bool doorsMoving, doorsOpen;
-
+    
     [SerializeField]
     private ElevatorOpenButton other;
+
+    [SerializeField]
+    private bool isInsideButton;
+    
+    private bool doorsMoving, doorsOpen;
 
     protected override void Awake() {
         base.Awake();
@@ -40,12 +43,18 @@ public class ElevatorOpenButton : InteractableObject {
 
         if (doorsOpen) {
             CloseDoors();
+            return;
+        }
+
+        if (isInsideButton) {
+            GalleryLoader.LoadGallery(OpenDoors);
         } else {
             OpenDoors();
         }
+        
     }
 
-    public void OpenedElsewhere() {
+    private void OpenedElsewhere() {
         doorsMoving = true;
         Highlight();
     }

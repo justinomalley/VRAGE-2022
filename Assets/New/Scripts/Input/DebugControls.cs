@@ -1,35 +1,33 @@
 using System;
-using System.Numerics;
-using System.Runtime.CompilerServices;
-using System.Text;
 using UnityEngine;
-using UnityEngine.Events;
 using UnityEngine.InputSystem;
 using Vector3 = UnityEngine.Vector3;
 
 /// <summary>
-/// GenericXRButton tracks the pressed/unpressed status of a button using the new Unity Input System.
+/// DebugControls allows us to move around the playspace using WASD on the keyboard, so that
+/// I don't have to jump all over the place during development :-)
 /// </summary>
 public class DebugControls : MonoBehaviour {
     [SerializeField]
     private InputActionReference forwardActionRef, backwardActionRef, leftActionRef, rightActionRef;
 
     [SerializeField]
-    private float moveSpeed = 10f;
+    private float moveSpeed = 0.01f;
+
+    [SerializeField]
+    private bool debugControlsActive;
 
     private Type lastActiveType;
 
     private void Update() {
-        var forward = GetAction(forwardActionRef);
-        var backward = GetAction(backwardActionRef);
-        var left = GetAction(leftActionRef);
-        var right = GetAction(rightActionRef);
-
-        var builder = new StringBuilder();
-        builder.Append(forward ? "W" : "");
-        builder.Append(left ? "A" : "");
-        builder.Append(backward ? "S" : "");
-        builder.Append(right ? "D" : "");
+        if (!debugControlsActive) {
+            return;
+        }
+        
+        var forward = GetButtonDown(forwardActionRef);
+        var backward = GetButtonDown(backwardActionRef);
+        var left = GetButtonDown(leftActionRef);
+        var right = GetButtonDown(rightActionRef);
 
         var movementVector = new Vector3();
 
@@ -52,7 +50,7 @@ public class DebugControls : MonoBehaviour {
         transform.Translate(movementVector.normalized * moveSpeed);
     }
 
-    private bool GetAction(InputActionReference actionReference) {
+    private bool GetButtonDown(InputActionReference actionReference) {
         if (actionReference == null 
             || actionReference.action == null 
             || !actionReference.action.enabled 

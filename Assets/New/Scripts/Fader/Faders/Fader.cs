@@ -38,6 +38,9 @@ public class Fader<T> : MonoBehaviour {
         }
         
         if (!finishedFadingEventFired && timer.Finished()) {
+            if (finishedFadingEvent == null) {
+                Debug.LogError("YOOOOOO");
+            }
             finishedFadingEvent.Invoke();
             finishedFadingEventFired = true;
             return;
@@ -56,15 +59,26 @@ public class Fader<T> : MonoBehaviour {
         return currentValue;
     }
     
-    public void Fade() {
+    public void Fade(UnityAction action = null) {
+        finishedFadingEvent.RemoveAllListeners();
+
+        if (action != null) {
+            finishedFadingEvent.AddListener(action);
+        }
+        
         timer.Start(duration);
     }
 
-    public void Fade(T end) {
+    public void Fade(T end, UnityAction action = null) {
         startValue = currentValue;
         endValue = end;
         timer.Start(duration);
         finishedFadingEvent.RemoveAllListeners();
+
+        if (action != null) {
+            finishedFadingEvent.AddListener(action);
+        }
+        
         finishedFadingEventFired = false;
     }
 
@@ -77,10 +91,6 @@ public class Fader<T> : MonoBehaviour {
     public void SetDuration(float dur) {
         durationOverriden = true;
         duration = dur;
-    }
-
-    public void AddCallback(UnityAction callback) {
-        finishedFadingEvent.AddListener(callback);
     }
 
     public void CancelFade(T value) {

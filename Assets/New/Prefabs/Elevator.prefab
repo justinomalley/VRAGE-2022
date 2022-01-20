@@ -1538,7 +1538,12 @@ PrefabInstance:
       propertyPath: other
       value: 
       objectReference: {fileID: 5201265840045250411}
-    m_RemovedComponents: []
+    - target: {fileID: 3095310200723869796, guid: 87b62b60ad8b5f94994f0e52efdf8b47, type: 3}
+      propertyPath: isInsideButton
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 3162709736928285971, guid: 87b62b60ad8b5f94994f0e52efdf8b47, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 87b62b60ad8b5f94994f0e52efdf8b47, type: 3}
 --- !u!114 &1805244989499575808 stripped
 MonoBehaviour:
@@ -1657,6 +1662,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6125086290684874760}
     m_Modifications:
+    - target: {fileID: 2035281491655049160, guid: a1e72a0327fea974495cebe789a3908a, type: 3}
+      propertyPath: gallery
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3635727907630275266, guid: a1e72a0327fea974495cebe789a3908a, type: 3}
       propertyPath: m_Name
       value: 1
@@ -1731,6 +1740,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6125086290684874760}
     m_Modifications:
+    - target: {fileID: 2035281491655049160, guid: a1e72a0327fea974495cebe789a3908a, type: 3}
+      propertyPath: gallery
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3635727907630275266, guid: a1e72a0327fea974495cebe789a3908a, type: 3}
       propertyPath: m_Name
       value: 3
@@ -1805,6 +1818,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6125086290684874760}
     m_Modifications:
+    - target: {fileID: 2035281491655049160, guid: a1e72a0327fea974495cebe789a3908a, type: 3}
+      propertyPath: gallery
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3635727907630275266, guid: a1e72a0327fea974495cebe789a3908a, type: 3}
       propertyPath: m_Name
       value: 4
@@ -1879,6 +1896,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6125086290684874760}
     m_Modifications:
+    - target: {fileID: 2035281491655049160, guid: a1e72a0327fea974495cebe789a3908a, type: 3}
+      propertyPath: gallery
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3635727907630275266, guid: a1e72a0327fea974495cebe789a3908a, type: 3}
       propertyPath: m_Name
       value: 7
@@ -1953,6 +1974,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6125086290684874760}
     m_Modifications:
+    - target: {fileID: 2035281491655049160, guid: a1e72a0327fea974495cebe789a3908a, type: 3}
+      propertyPath: gallery
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3635727907630275266, guid: a1e72a0327fea974495cebe789a3908a, type: 3}
       propertyPath: m_Name
       value: 2
@@ -2027,6 +2052,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6125086290684874760}
     m_Modifications:
+    - target: {fileID: 2035281491655049160, guid: a1e72a0327fea974495cebe789a3908a, type: 3}
+      propertyPath: gallery
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3635727907630275266, guid: a1e72a0327fea974495cebe789a3908a, type: 3}
       propertyPath: m_Name
       value: 6
@@ -2101,6 +2130,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6125086290684874760}
     m_Modifications:
+    - target: {fileID: 2035281491655049160, guid: a1e72a0327fea974495cebe789a3908a, type: 3}
+      propertyPath: gallery
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3635727907630275266, guid: a1e72a0327fea974495cebe789a3908a, type: 3}
       propertyPath: m_Name
       value: 5
@@ -2231,7 +2264,8 @@ PrefabInstance:
       propertyPath: other
       value: 
       objectReference: {fileID: 1805244989499575808}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 3162709736928285971, guid: 87b62b60ad8b5f94994f0e52efdf8b47, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 87b62b60ad8b5f94994f0e52efdf8b47, type: 3}
 --- !u!114 &5201265840045250411 stripped
 MonoBehaviour:
@@ -2256,6 +2290,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6125086290684874760}
     m_Modifications:
+    - target: {fileID: 2035281491655049160, guid: a1e72a0327fea974495cebe789a3908a, type: 3}
+      propertyPath: gallery
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3635727907630275266, guid: a1e72a0327fea974495cebe789a3908a, type: 3}
       propertyPath: m_Name
       value: 0

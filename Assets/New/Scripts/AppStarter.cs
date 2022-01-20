@@ -1,24 +1,28 @@
-using System;
 using UnityEngine;
 
+/// <summary>
+/// AppStarter triggers the app to start once the user has pressed both triggers.
+/// </summary>
 public class AppStarter : MonoBehaviour {
-    // These GameObjects should have scripts on them implementing IXRController.
+    // `leftObj` and `rightObj` should have scripts on them implementing IXRController.
     [SerializeField]
-    private GameObject leftGameObject, rightGameObject;
+    private GameObject leftObj, rightObj;
     
     private IXRController left, right;
-
-    private bool triggered;
-
-    private MaterialAlphaFader backgroundFader;
-    private TextAlphaFader textFader;
-
+    
+    // `debug` skips the need to press both triggers to begin
     [SerializeField]
     private bool debug;
-
+    
+    private MaterialAlphaFader backgroundFader;
+    private TextAlphaFader textFader;
+    
+    // `triggered` is set to true once the app has been triggered to start.
+    private bool triggered;
+    
     private void Awake() {
-        left = leftGameObject.GetComponent<IXRController>();
-        right = rightGameObject.GetComponent<IXRController>();
+        left = leftObj.GetComponent<IXRController>();
+        right = rightObj.GetComponent<IXRController>();
         backgroundFader = transform.Find("Background").GetComponent<MaterialAlphaFader>();
         textFader = transform.Find("Text").GetComponent<TextAlphaFader>();
     }
@@ -45,17 +49,19 @@ public class AppStarter : MonoBehaviour {
         
         StartApp();
     }
-
+    
+    /// <summary>
+    /// StartApp triggers the "Press both triggers to begin" message to fade out,
+    /// then starts the app and activates the teleportation pads.
+    /// </summary>
     private void StartApp() {
         triggered = true;
 
-        backgroundFader.AddCallback(() => {
+        // These two faders should be configured to have the same fade duration via the inspector.
+        backgroundFader.Fade(() => {
             TeleportPadManager.Activate();
             Destroy(gameObject);
         });
-
-        // These two faders should be configured to have the same fade duration via the inspector.
-        backgroundFader.Fade();
         textFader.Fade();
     }
 }

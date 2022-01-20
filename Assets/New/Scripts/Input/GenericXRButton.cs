@@ -2,15 +2,14 @@ using System;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.InputSystem;
+using UnityEngine.Serialization;
 
 /// <summary>
 /// GenericXRButton tracks the pressed/unpressed status of a button using the new Unity Input System.
 /// </summary>
 public class GenericXRButton : MonoBehaviour {
     [SerializeField]
-    private InputActionReference m_ActionReference;
-    
-    private InputActionReference actionReference { get => m_ActionReference ; set => m_ActionReference = value; }
+    private InputActionReference actionReference;
 
     private bool pressed, pressedLastFrame;
     
@@ -20,10 +19,7 @@ public class GenericXRButton : MonoBehaviour {
     private UnityEvent buttonUnpressedEvent { get; } = new UnityEvent();
 
     private void Update() {
-        if (actionReference == null 
-            || actionReference.action == null 
-            || !actionReference.action.enabled 
-            || actionReference.action.controls.Count <= 0) {
+        if (actionReference == null || actionReference.action == null) {
             return;
         }
         

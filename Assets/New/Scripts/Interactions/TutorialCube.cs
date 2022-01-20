@@ -47,14 +47,13 @@ public class TutorialCube : InteractableObject {
         }
         
         triggered = true;
-        scaleFader.AddCallback(OpenLobby);
-        scaleFader.Fade();
+        scaleFader.Fade(OpenLobby);
         rotateFader.Fade();
     }
 
     private void OpenLobby() {
         Destroy(gameObject);
-        App.EnterLobby();
+        GalleryLoader.EnterLobby();
     }
 
     public float GetRotateSpeed() {

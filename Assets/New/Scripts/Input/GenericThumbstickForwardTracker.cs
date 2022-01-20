@@ -8,10 +8,8 @@ using UnityEngine.InputSystem;
 /// </summary>
 public class GenericThumbstickForwardTracker : MonoBehaviour {
     [SerializeField]
-    private InputActionReference m_ActionReference;
+    private InputActionReference actionReference;
 
-    private InputActionReference actionReference { get => m_ActionReference; set => m_ActionReference = value; }
-    
     private UnityEvent thumbstickForwardEvent { get; } = new UnityEvent();
     
     private UnityEvent thumbstickReleasedEvent { get; } = new UnityEvent();

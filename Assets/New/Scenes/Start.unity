@@ -399,25 +399,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7577846002541204393, guid: 67958c4ad40e3b9458211c01475267f0, type: 3}
   m_PrefabInstance: {fileID: 7577846003330983500}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1056687202 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3182992450095832596, guid: 78316d143cbd3a84b8b3a439d0a5a443, type: 3}
-  m_PrefabInstance: {fileID: 6203258378177951158}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1056687210
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1056687202}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f86e3928e927bdd478ca2377e3e791e7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  isCurrentPad: 0
-  doors: {fileID: 0}
 --- !u!1 &1405786277
 GameObject:
   m_ObjectHideFlags: 0
@@ -468,8 +449,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d828870db083c7a43a6a360b0a38771e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  leftGameObject: {fileID: 734623498}
-  rightGameObject: {fileID: 1799068918}
+  leftObj: {fileID: 734623498}
+  rightObj: {fileID: 1799068918}
   debug: 1
 --- !u!1 &1624464226
 GameObject:
@@ -482,7 +463,7 @@ GameObject:
   - component: {fileID: 1624464227}
   - component: {fileID: 1624464228}
   m_Layer: 0
-  m_Name: App
+  m_Name: GalleryLoader
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -514,43 +495,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e23c1cd55d449d41bb5fba0d3ea346b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lobbyPrefab: {fileID: 2365319294467425935, guid: 2e6ca4838fa687d48bcbcda8e0e12966, type: 3}
   elevatorPrefab: {fileID: 6125086290512539621, guid: 95627dade8bb06f4284c2c1ed3df1dd9, type: 3}
---- !u!1 &1766287532 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7577846002541204392, guid: 67958c4ad40e3b9458211c01475267f0, type: 3}
-  m_PrefabInstance: {fileID: 7577846003330983500}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1766287533
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1766287532}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b90eaae8ee7f6bf46be1c8ad060bd48d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_ActionAsset: {fileID: -944628639613478452, guid: adbc485aed8230d43a186661eb4205fa, type: 3}
---- !u!114 &1766287534
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1766287532}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 95e4d2dca53e4704eb40f2ad1d0b1fdb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  forwardActionRef: {fileID: -5056396035135579058, guid: adbc485aed8230d43a186661eb4205fa, type: 3}
-  backwardActionRef: {fileID: -5314185323010463935, guid: adbc485aed8230d43a186661eb4205fa, type: 3}
-  leftActionRef: {fileID: 6094658338185063695, guid: adbc485aed8230d43a186661eb4205fa, type: 3}
-  rightActionRef: {fileID: 1291763181620107642, guid: adbc485aed8230d43a186661eb4205fa, type: 3}
-  moveSpeed: 0.01
+  galleries:
+  - {fileID: 2365319294467425935, guid: 2e6ca4838fa687d48bcbcda8e0e12966, type: 3}
+  - {fileID: 877107046745208670, guid: 95faf05e41ca29043861497af13c33b0, type: 3}
 --- !u!1001 &1796826459
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1291,6 +1239,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1766287534, guid: 67958c4ad40e3b9458211c01475267f0, type: 3}
+      propertyPath: debugControlsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7577846002541204392, guid: 67958c4ad40e3b9458211c01475267f0, type: 3}
       propertyPath: m_Name
       value: VRAGECameraRig

@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class TeleportPadManager : MonoBehaviour {
@@ -65,7 +66,8 @@ public class TeleportPadManager : MonoBehaviour {
                 pad.gameObject.SetActive(true);
                 pad.FadeIn(instance.unhighlightedAlpha);
             }
-        } catch(InvalidOperationException) {
+        } catch (InvalidOperationException e) {
+            Debug.LogError(e);
             // Just in case the collection was modified 
             EnableTeleportPads();
         }
@@ -161,7 +163,7 @@ public class TeleportPadManager : MonoBehaviour {
 
     public static void AddTeleportPad(TeleportPad pad) {
         InitializeIfNecessary();
-        
+
         teleportPads.Add(pad);
         
         var _propBlock = new MaterialPropertyBlock();
@@ -195,6 +197,6 @@ public class TeleportPadManager : MonoBehaviour {
             Destroy(pad.gameObject);
         }
         
-        teleportPads.Clear();
+        teleportPads.RemoveAll(pad => !(pad is ElevatorTeleportPad));
     }
 }

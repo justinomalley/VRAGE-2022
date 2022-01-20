@@ -26,6 +26,12 @@ public class AnimateMaterialColor : MonoBehaviour, IAnimatableComponent<Color> {
         targetMaterial.color = property;
     }
 
+    private void OnDestroy() {
+        if (targetMaterial != null) {
+            targetMaterial.color = origColor;
+        }
+    }
+
     private void OnApplicationQuit() {
         if (targetMaterial != null) {
             targetMaterial.color = origColor;

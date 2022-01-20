@@ -25,10 +25,9 @@ public class TeleportPad : MonoBehaviour {
 
     // `action` will be executed when (and if) the fade is complete.
     public void FadeOutAndDisable() {
-        fader.AddCallback(() => {
-            gameObject.SetActive(false);
+        fader.Fade(0, () => {
+            gameObject.SetActive(false); 
         });
-        fader.Fade(0);
     }
 
     public void Disable() {
