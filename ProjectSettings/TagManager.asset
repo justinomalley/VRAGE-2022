@@ -6,11 +6,13 @@ TagManager:
   tags:
   - TeleportPad
   - Controller
+  - eButton
+  - Plane
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Elevator
   - Water
   - UI
   - 

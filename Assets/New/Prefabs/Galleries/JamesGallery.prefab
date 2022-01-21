@@ -332,7 +332,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   highlightedColor: {r: 1, g: 0.78823537, b: 0, a: 1}
   audioToUse: 1
-  shiftVector: {x: 0, y: 0.000376, z: 0}
 --- !u!54 &5385256272168344317
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -4645,8 +4644,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playOnAwake: 0
-  radioClip: {fileID: 8300000, guid: 2d4dd1359960a0c42b3dc5ab6d472753, type: 3}
-  tapeClip: {fileID: 8300000, guid: d754595225e898f4486068a69b1cbf94, type: 3}
+  radioClip: {fileID: 8300000, guid: 7bfb2b67199934346945cc9d93535e90, type: 3}
+  tapeClip: {fileID: 8300000, guid: 22e0017a8dd42f842b99934e0504b825, type: 3}
   radioButton: {fileID: 9005488322383839461}
   tapeButton: {fileID: 2248929017619964882}
 --- !u!82 &6909158032355524830
@@ -12403,7 +12402,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   highlightedColor: {r: 1, g: 0.78823537, b: 0, a: 1}
   audioToUse: 0
-  shiftVector: {x: 0, y: 0.000593, z: 0}
 --- !u!1 &6225860800198706311
 GameObject:
   m_ObjectHideFlags: 0
