@@ -1,10 +1,8 @@
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 
 public class TeleportPadManager : MonoBehaviour {
-    //
     private static List<TeleportPad> teleportPads = new List<TeleportPad>(20);
 
     [SerializeField]
@@ -187,7 +185,6 @@ public class TeleportPadManager : MonoBehaviour {
         }
             
         pad.SetHighlightValues(instance.highlightedAlpha, instance.unhighlightedAlpha);
-        pad.transform.SetParent(instance.transform);
         pad.gameObject.SetActive(false);
     }
 

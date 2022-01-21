@@ -9,7 +9,7 @@ public class TeleportPad : MonoBehaviour {
 
     private float highlightedAlpha, unhighlightedAlpha;
 
-    protected void Awake() {
+    protected virtual void Awake() {
         fader = GetComponent<RendererAlphaFader>();
         TeleportPadManager.AddTeleportPad(this);
     }
@@ -39,7 +39,7 @@ public class TeleportPad : MonoBehaviour {
         return isCurrentPad;
     }
     
-    public void SetCurrentPad() {
+    public virtual void SetCurrentPad() {
         isCurrentPad = true;
         gameObject.SetActive(false);
     }
