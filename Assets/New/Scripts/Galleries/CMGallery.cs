@@ -2,18 +2,23 @@ using UnityEngine;
 
 public class CMGallery : GalleryRoom {
 
-    [SerializeField]
-    private AudioClip chelseeSound, makennaSound;
-    
-    // Start is called before the first frame update
-    void Start()
-    {
-        
+    public enum Artist {
+        Chelsee,
+        Makenna
     }
 
-    // Update is called once per frame
-    void Update()
-    {
+    private Artist currentArtist = Artist.Chelsee;
+
+    [SerializeField]
+    private AudioClip chelseeSound, makennaSound;
+
+    public void SetSound(Artist artist) {
+        if (currentArtist  == artist) {
+            return;
+        }
         
+        currentArtist = artist;
+        audioSource.clip = artist == Artist.Chelsee ? chelseeSound : makennaSound;
+        audioSource.Play();
     }
 }

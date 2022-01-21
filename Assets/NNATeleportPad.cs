@@ -3,7 +3,7 @@ using UnityEngine;
 public class NNATeleportPad : TeleportPad {
 
     [SerializeField]
-    private Artist artist;
+    private NNAGallery.Artist artist;
 
     private NNAGallery gallery;
 

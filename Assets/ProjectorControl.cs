@@ -49,7 +49,7 @@ public class ProjectorControl : InteractableObject {
         text.SetActive(false);
         animator.SetTrigger(RollFilm);
         Press();
-        gallery.SetSound(Artist.Nicole);
+        gallery.SetSound(NNAGallery.Artist.Nicole);
     }
 
     private void Press() {

@@ -111,9 +111,9 @@ public class GalleryLoader : MonoBehaviour {
         };
 
         if (selectedRoom == Room.OS) {
-            Elevator.RotateForOSRoom();
+            Elevator.RotateForOS();
         } else {
-            Elevator.ResetRotation();
+            Elevator.ResetPositionAndRotation();
         }
 
         galleryInstance = galleryObj.GetComponent<GalleryRoom>();

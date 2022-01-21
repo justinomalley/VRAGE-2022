@@ -1,13 +1,13 @@
 using System;
 using UnityEngine;
 
-public enum Artist {
-    Nicole,
-    Nate,
-    Andrew
-}
-
 public class NNAGallery : GalleryRoom {
+    
+    public enum Artist {
+        Nicole,
+        Nate,
+        Andrew
+    }
 
     [SerializeField]
     private AudioClip andrewSound, nicoleProjectorSound, nateSound;
