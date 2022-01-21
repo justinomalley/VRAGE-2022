@@ -501,6 +501,7 @@ MonoBehaviour:
   - {fileID: 6548068432974946478, guid: 95faf05e41ca29043861497af13c33b0, type: 3}
   - {fileID: 4552467945894728065, guid: 1015e3fc6b4fc414886989fed200bedd, type: 3}
   - {fileID: 8899556005268308932, guid: aa43dcca34d22a446a06d0579a463420, type: 3}
+  - {fileID: 5980969274722729456, guid: 0d3de2ba6228daf4985863038475962c, type: 3}
 --- !u!1001 &1796826459
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1292,6 +1293,14 @@ PrefabInstance:
     - target: {fileID: 7577846002541204393, guid: 67958c4ad40e3b9458211c01475267f0, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7577846002928634291, guid: 67958c4ad40e3b9458211c01475267f0, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7577846003450478806, guid: 67958c4ad40e3b9458211c01475267f0, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 67958c4ad40e3b9458211c01475267f0, type: 3}
