@@ -163,6 +163,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a963a6f05ef874447b4cf5b295566711, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playOnAwake: 1
+  mikeSkyboxMat: {fileID: 2100000, guid: b82b400a52a78604badb49fc775f0e5b, type: 2}
 --- !u!82 &8515356057013490283
 AudioSource:
   m_ObjectHideFlags: 0
