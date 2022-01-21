@@ -52,11 +52,11 @@ public class GalleryLoader : MonoBehaviour {
     /// EnterLobby is used when exiting the tutorial scene to enter the lobby.
     /// </summary>
     public static void EnterLobby() {
-        selectedRoom = Room.Lobby;
-        LoadGallery();
-        
         Instantiate(instance.elevatorPrefab);
         
+        selectedRoom = Room.Lobby;
+        LoadGallery();
+
         Destroy(GameObject.Find("TutorialOnlyLogo"));
         var lobbyLogo = GameObject.Find("LobbyLogo");
         lobbyLogo.transform.SetParent(galleryInstance.transform);
@@ -109,6 +109,12 @@ public class GalleryLoader : MonoBehaviour {
             Room.OS => Instantiate(_galleries[(int)Room.OS]),
             _ => throw new ArgumentOutOfRangeException(nameof(selectedRoom), selectedRoom, null)
         };
+
+        if (selectedRoom == Room.OS) {
+            Elevator.RotateForOSRoom();
+        } else {
+            Elevator.ResetRotation();
+        }
 
         galleryInstance = galleryObj.GetComponent<GalleryRoom>();
         currentRoom = selectedRoom;

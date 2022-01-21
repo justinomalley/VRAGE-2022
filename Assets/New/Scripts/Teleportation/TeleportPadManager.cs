@@ -159,9 +159,13 @@ public class TeleportPadManager : MonoBehaviour {
         hitPad.SetCurrentPad();
         currentPad = hitPad;
         hitPad = null;
-
+        
+        // Set parent so we can rotate elevator while inside and keep playspace oriented correctly.
         if (currentPad is ElevatorTeleportPad elePad2) {
+            _cameraRigTransform.parent = Elevator.GetTransform();
             elePad2.EnteredElevator();
+        } else {
+            _cameraRigTransform.SetParent(null);
         }
 
         if (elePad != null) {
