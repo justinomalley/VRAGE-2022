@@ -9,8 +9,6 @@ public class GalleryLoader : MonoBehaviour {
     [SerializeField]
     private GameObject elevatorPrefab;
 
-    private static GameObject elevatorInstance;
-
     [SerializeField]
     private GameObject[] galleries;
     
@@ -57,7 +55,7 @@ public class GalleryLoader : MonoBehaviour {
         selectedRoom = Room.Lobby;
         LoadGallery();
         
-        elevatorInstance = Instantiate(instance.elevatorPrefab);
+        Instantiate(instance.elevatorPrefab);
         
         Destroy(GameObject.Find("TutorialOnlyLogo"));
         var lobbyLogo = GameObject.Find("LobbyLogo");
@@ -66,7 +64,7 @@ public class GalleryLoader : MonoBehaviour {
         var lobby = galleryInstance.GetComponent<Lobby>();
         lobby.FirstTimeLobbyLoad();
         
-        galleryInstance.FadeAudioIn();
+        galleryInstance.FadeAudioInOnEntry();
     }
 
     /// <summary>
@@ -83,6 +81,11 @@ public class GalleryLoader : MonoBehaviour {
     /// the elevator doors when the gallery has loaded).
     /// </summary>
     public static void LoadGallery(UnityAction action = null) {
+        if ((int)selectedRoom >= _galleries.Length) {
+            Debug.LogError("No gallery available for " + selectedRoom);
+            return;
+        }
+        
         // The selected gallery is already loaded; avoid reload.
         if (selectedRoom == currentRoom) {
             action?.Invoke();
@@ -98,12 +101,12 @@ public class GalleryLoader : MonoBehaviour {
         var galleryObj = selectedRoom switch {
             Room.Lobby => Instantiate(_galleries[(int)Room.Lobby]),
             Room.Sarah => Instantiate(_galleries[(int)Room.Sarah]),
-            Room.James => Instantiate(_galleries[0]),
-            Room.Kincaid => Instantiate(_galleries[0]),
-            Room.CM => Instantiate(_galleries[0]),
-            Room.Mike => Instantiate(_galleries[0]),
-            Room.NNA => Instantiate(_galleries[0]),
-            Room.OS => Instantiate(_galleries[0]),
+            Room.James => Instantiate(_galleries[(int)Room.James]),
+            Room.Kincaid => Instantiate(_galleries[(int)Room.Kincaid]),
+            Room.CM => Instantiate(_galleries[(int)Room.CM]),
+            Room.Mike => Instantiate(_galleries[(int)Room.Mike]),
+            Room.NNA => Instantiate(_galleries[(int)Room.NNA]),
+            Room.OS => Instantiate(_galleries[(int)Room.OS]),
             _ => throw new ArgumentOutOfRangeException(nameof(selectedRoom), selectedRoom, null)
         };
 
@@ -114,7 +117,7 @@ public class GalleryLoader : MonoBehaviour {
 
     private static void FadeOutGalleryAudioInElevator() {
         if (Elevator.InElevator()) {
-            galleryInstance.FadeAudioOut();
+            galleryInstance.FadeAudioOutOnExit();
         } else {
             galleryInstance.CancelFadeOut();
         }
@@ -122,7 +125,7 @@ public class GalleryLoader : MonoBehaviour {
 
     private static void FadeInGalleryAudioInElevator() {
         if (Elevator.InElevator()) {
-            galleryInstance.FadeAudioIn();
+            galleryInstance.FadeAudioInOnEntry();
         }
     }
 }

@@ -1774,6 +1774,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 6125086290684874760}
     m_Modifications:
     - target: {fileID: 2035281491655049160, guid: a1e72a0327fea974495cebe789a3908a, type: 3}
+      propertyPath: room
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2035281491655049160, guid: a1e72a0327fea974495cebe789a3908a, type: 3}
       propertyPath: gallery
       value: 1
       objectReference: {fileID: 0}
@@ -1855,6 +1859,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6125086290684874760}
     m_Modifications:
+    - target: {fileID: 2035281491655049160, guid: a1e72a0327fea974495cebe789a3908a, type: 3}
+      propertyPath: room
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 2035281491655049160, guid: a1e72a0327fea974495cebe789a3908a, type: 3}
       propertyPath: gallery
       value: 1
@@ -1938,6 +1946,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 6125086290684874760}
     m_Modifications:
     - target: {fileID: 2035281491655049160, guid: a1e72a0327fea974495cebe789a3908a, type: 3}
+      propertyPath: room
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 2035281491655049160, guid: a1e72a0327fea974495cebe789a3908a, type: 3}
       propertyPath: gallery
       value: 1
       objectReference: {fileID: 0}
@@ -2019,6 +2031,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6125086290684874760}
     m_Modifications:
+    - target: {fileID: 2035281491655049160, guid: a1e72a0327fea974495cebe789a3908a, type: 3}
+      propertyPath: room
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 2035281491655049160, guid: a1e72a0327fea974495cebe789a3908a, type: 3}
       propertyPath: gallery
       value: 1
@@ -2102,6 +2118,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 6125086290684874760}
     m_Modifications:
     - target: {fileID: 2035281491655049160, guid: a1e72a0327fea974495cebe789a3908a, type: 3}
+      propertyPath: room
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 2035281491655049160, guid: a1e72a0327fea974495cebe789a3908a, type: 3}
       propertyPath: gallery
       value: 1
       objectReference: {fileID: 0}
@@ -2183,6 +2203,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6125086290684874760}
     m_Modifications:
+    - target: {fileID: 2035281491655049160, guid: a1e72a0327fea974495cebe789a3908a, type: 3}
+      propertyPath: room
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 2035281491655049160, guid: a1e72a0327fea974495cebe789a3908a, type: 3}
       propertyPath: gallery
       value: 1

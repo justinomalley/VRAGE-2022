@@ -2,9 +2,12 @@ using UnityEngine;
 
 public class GalleryRoom : MonoBehaviour {
     
-    private AudioSource audioSource;
+    protected AudioSource audioSource;
 
     private AudioSourceVolumeFader fader;
+
+    [SerializeField]
+    private bool playOnAwake = true;
 
     private bool initialized;
     
@@ -22,15 +25,23 @@ public class GalleryRoom : MonoBehaviour {
         fader = GetComponent<AudioSourceVolumeFader>();
     }
 
-    public void FadeAudioIn() {
+    public void FadeAudioInOnEntry() {
         InitializeIfNecessary();
         fader.SetDuration(ElevatorDoors.doorOpenAnimationDuration);
         fader.Fade(1);
-        audioSource.Play();
+
+        if (playOnAwake) {
+            audioSource.Play();
+        }
     }
 
-    public void FadeAudioOut() {
+    public void FadeAudioOutOnExit() {
         InitializeIfNecessary();
+
+        if (!audioSource.isPlaying) {
+            return;
+        }
+        
         fader.SetDuration(ElevatorDoors.doorCloseAnimationDuration);
         fader.Fade(0, () => {
             audioSource.Stop();

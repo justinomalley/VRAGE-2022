@@ -23,7 +23,21 @@ public abstract class InteractableObject : MonoBehaviour {
     public virtual void Interact() { }
 
     protected virtual void Awake() {
-        material = GetComponentInChildren<Renderer>().material;
+        var renderer = GetComponent<Renderer>();
+
+        if (renderer != null) {
+            material = renderer.material;
+        } else {
+            renderer = GetComponentInChildren<Renderer>();
+            if (renderer != null) {
+                material = renderer.material;
+            }
+        }
+
+        if (material == null) {
+            Debug.LogError("No renderer found on this interactable object");
+        }
+        
         origColor = material.color;
     }
 
