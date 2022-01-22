@@ -3,7 +3,7 @@ using UnityEngine;
 
 public abstract class InteractableObject : MonoBehaviour {
     
-    private bool leftTouching, rightTouching;
+    protected bool leftTouching, rightTouching;
 
     protected bool highlighted;
 

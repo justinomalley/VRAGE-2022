@@ -6,13 +6,23 @@ public class ElevatorButton : InteractableObject {
     
     private AudioSource src;
 
+    private bool selected;
+
     protected override void Awake() {
         base.Awake();
         src = GetComponent<AudioSource>();
+
+        if (room != GalleryLoader.Room.Lobby) {
+            return;
+        }
+        
+        // Highlight lobby button on Awake since we start there.
+        selected = true;
+        Highlight();
     }
 
     protected override void Touch() {
-        if (highlighted) {
+        if (selected) {
             return;
         }
         
@@ -20,7 +30,7 @@ public class ElevatorButton : InteractableObject {
     }
     
     protected override void Untouch() {
-        if (!highlighted) {
+        if (selected) {
             return;
         }
         
@@ -33,6 +43,18 @@ public class ElevatorButton : InteractableObject {
         }
         
         GalleryLoader.SetGalleryRoom(room);
+        selected = true;
+    }
+
+    public void Deselect() {
+        selected = false;
+        if (!leftTouching && !rightTouching) {
+            Unhighlight();
+        }
+    }
+
+    public GalleryLoader.Room GetRoom() {
+        return room;
     }
 }
 

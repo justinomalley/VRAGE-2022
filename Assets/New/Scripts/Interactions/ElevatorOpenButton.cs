@@ -47,9 +47,7 @@ public class ElevatorOpenButton : InteractableObject {
         if (doorsMoving) {
             return;
         }
-        
-        tmp.gameObject.SetActive(false);
-        
+
         other.OpenedElsewhere();
 
         if (doorsOpen) {
@@ -69,16 +67,19 @@ public class ElevatorOpenButton : InteractableObject {
     /// OpenedElsewhere highlights this elevator button if the other one was pressed.
     /// </summary>
     private void OpenedElsewhere() {
+        tmp.text = "WAIT";
         doorsMoving = true;
         Highlight();
     }
 
     private void OpenDoors() {
+        tmp.text = "WAIT";
         doorsMoving = true;
         doors.Open();
     }
 
     private void CloseDoors() {
+        tmp.text = "WAIT";
         doorsMoving = true;
         doors.Close();
     }
@@ -110,19 +111,7 @@ public class ElevatorOpenButton : InteractableObject {
         doorsMoving = false;
         doorsOpen = false;
     }
-    
-    protected override void Highlight() {
-        base.Highlight();
-        // Deactivate "OPEN" text when highlighting button
-        tmp.gameObject.SetActive(false);
-    }
 
-    protected override void Unhighlight() {
-        base.Unhighlight();
-        // Activate "OPEN" text when unhighlighting button
-        tmp.gameObject.SetActive(true);
-    }
-    
     private void OnApplicationQuit() {
         Unhighlight();
     }

@@ -10,6 +10,9 @@ public class Elevator : MonoBehaviour {
 
     [SerializeField]
     private Transform makennaTransform;
+
+    [SerializeField]
+    private ElevatorButton[] floorButtons;
     
     private static Elevator instance;
 
@@ -37,6 +40,15 @@ public class Elevator : MonoBehaviour {
     public static void RotateAndPositionForMakenna() {
         instance.transform.rotation = Quaternion.Euler(0, 270, 0);
         instance.transform.position = makennaPosition;
+    }
+
+    public static void SelectFloor(GalleryLoader.Room room) {
+        for (var i = 0; i < instance.floorButtons.Length; i++) {
+            var button = instance.floorButtons[i];
+            if (button.GetRoom() != room) {
+                instance.floorButtons[i].Deselect();
+            }
+        }
     }
 
     public static Transform GetTransform() {

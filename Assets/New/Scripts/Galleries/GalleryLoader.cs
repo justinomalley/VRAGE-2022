@@ -73,6 +73,7 @@ public class GalleryLoader : MonoBehaviour {
     /// </summary>
     public static void SetGalleryRoom(Room room) {
         selectedRoom = room;
+        Elevator.SelectFloor(room);
     }
     
     /// <summary>
