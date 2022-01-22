@@ -1245,10 +1245,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1766287534, guid: 67958c4ad40e3b9458211c01475267f0, type: 3}
-      propertyPath: debugControlsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 7577846002541204392, guid: 67958c4ad40e3b9458211c01475267f0, type: 3}
       propertyPath: m_Name
       value: VRAGECameraRig
@@ -1296,14 +1292,6 @@ PrefabInstance:
     - target: {fileID: 7577846002541204393, guid: 67958c4ad40e3b9458211c01475267f0, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7577846002928634291, guid: 67958c4ad40e3b9458211c01475267f0, type: 3}
-      propertyPath: m_Layer
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 7577846003450478806, guid: 67958c4ad40e3b9458211c01475267f0, type: 3}
-      propertyPath: m_Layer
-      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 67958c4ad40e3b9458211c01475267f0, type: 3}
