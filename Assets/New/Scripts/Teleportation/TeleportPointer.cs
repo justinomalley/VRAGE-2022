@@ -5,21 +5,16 @@ public class TeleportPointer : MonoBehaviour {
     
     private TeleportPad currentPad;
 
-    private LineRenderer lineRenderer;
-
-    private Vector3 forward;
-    
-    private bool activePointer;
+    private BezierPointer curvedPointer;
 
     [SerializeField]
-    private bool debug;
-    
+    private Color noHitColor, hitColor;
+
+    private bool activePointer;
+
     private void Awake() {
-        controller = GetComponent<VRAGEController>();
-        lineRenderer = GetComponentInChildren<LineRenderer>();
-        var positions = new Vector3[2];
-        lineRenderer.GetPositions(positions);
-        forward = positions[1].normalized;
+        controller = GetComponentInParent<VRAGEController>();
+        curvedPointer = GetComponent<BezierPointer>();
     }
     
     private void Update() {
@@ -27,26 +22,26 @@ public class TeleportPointer : MonoBehaviour {
             if (!activePointer) {
                 return;
             }
+            curvedPointer.SetActive(false);
             TeleportPadManager.TeleportControlReleased(controller.Hand() == Hand.Left);
             activePointer = false;
             return;
         }
         
-        var fwd = transform.TransformDirection(forward.normalized);
         var inLeftHand = controller.Hand() == Hand.Left;
-
-        if (debug) {
-            Debug.DrawRay(transform.position, fwd * 50, Color.green);
-        }
+        
+        curvedPointer.SetColor(noHitColor);
 
         if (!activePointer) {
+            curvedPointer.SetActive(true);
             TeleportPadManager.TeleportControlForward(inLeftHand);
             activePointer = true;
         }
 
-        if (Physics.Raycast(transform.position, fwd, out var objectHit, 50)) {
-            if (objectHit.transform.gameObject.CompareTag("TeleportPad")) {
-                currentPad = objectHit.transform.GetComponent<TeleportPad>();
+        if (curvedPointer.IsHittingTarget(out var go)) {
+            if (go.CompareTag("TeleportPad")) {
+                curvedPointer.SetColor(hitColor);
+                currentPad = go.GetComponent<TeleportPad>();
                 TeleportPadManager.HitPad(currentPad,inLeftHand);
             } else {
                 TeleportPadManager.StoppedHittingPad(inLeftHand);
