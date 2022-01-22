@@ -27,14 +27,6 @@ public class ProjectorControl : InteractableObject {
         downPosition = transform.Find("Down").position;
     }
 
-    protected override void Touch() {
-        Highlight();
-    }
-    
-    protected override void Untouch() {
-        Unhighlight();
-    }
-
     public override void Interact() {
         if (playing) {
             videoPlayer.Stop();

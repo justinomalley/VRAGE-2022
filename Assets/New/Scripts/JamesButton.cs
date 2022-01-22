@@ -18,14 +18,6 @@ public class JamesButton : InteractableObject {
         downPosition = transform.Find("Down").position;
     }
 
-    protected override void Touch() {
-        Highlight();
-    }
-    
-    protected override void Untouch() {
-        Unhighlight();
-    }
-
     public override void Interact() {
         if (playing) {
             gallery.Stop();

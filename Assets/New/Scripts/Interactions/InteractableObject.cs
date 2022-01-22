@@ -15,10 +15,14 @@ public abstract class InteractableObject : MonoBehaviour {
     protected Color origColor;
 
     // Use virtual methods instead of abstract so subclasses can just implement what they need.
-    
-    protected virtual void Touch() { }
 
-    protected virtual void Untouch() { }
+    protected virtual void Touch() {
+        Highlight();
+    }
+
+    protected virtual void Untouch() {
+        Unhighlight();
+    }
     
     public virtual void Interact() { }
 
