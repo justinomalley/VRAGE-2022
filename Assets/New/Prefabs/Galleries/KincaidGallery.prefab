@@ -1,5 +1,35 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1815296473
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1815296474}
+  m_Layer: 3
+  m_Name: ElevatorTarget
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1815296474
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1815296473}
+  m_LocalRotation: {x: -0, y: 0.7071068, z: -0, w: 0.7071068}
+  m_LocalPosition: {x: -0.028919447, y: -0.037938856, z: 0.01085194}
+  m_LocalScale: {x: 0.14590526, y: 0.1459051, z: 0.14590526}
+  m_Children: []
+  m_Father: {fileID: 8899556005268308939}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8899556003386466509
 GameObject:
   m_ObjectHideFlags: 0
@@ -8847,6 +8877,7 @@ Transform:
   - {fileID: 8899556005207090136}
   - {fileID: 8899556004642636335}
   - {fileID: 8899556005103971323}
+  - {fileID: 1815296474}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -10525,10 +10556,30 @@ PrefabInstance:
       propertyPath: m_Name
       value: TelePad
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1303331432, guid: 7409b75b90ce1024484dec59c2c9d4b0, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 7409b75b90ce1024484dec59c2c9d4b0, type: 3}
+--- !u!1 &124895092038767007 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8807392034317072209, guid: 7409b75b90ce1024484dec59c2c9d4b0, type: 3}
+  m_PrefabInstance: {fileID: 8899556005126072014}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &5243821984623989951 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3694182353080316529, guid: 7409b75b90ce1024484dec59c2c9d4b0, type: 3}
   m_PrefabInstance: {fileID: 8899556005126072014}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &85535434930445209
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 124895092038767007}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: acdd116e00a537149ad859e2446f9303, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isCurrentPad: 0
+  elevatorTarget: {fileID: 1815296474}

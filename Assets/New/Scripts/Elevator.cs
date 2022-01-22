@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class Elevator : MonoBehaviour {
@@ -16,11 +17,20 @@ public class Elevator : MonoBehaviour {
     
     private static Elevator instance;
 
+    [SerializeField]
+    private AnimationCurve curve;
+
+    private TransformPositionFader fader;
+    
+    private static bool goneAway;
+
     private void Awake() {
         originalRotation = transform.rotation;
         originalPosition = transform.position;
         makennaPosition = makennaTransform.position;
         teleportPad = GetComponentInChildren<ElevatorTeleportPad>();
+        fader = GetComponent<TransformPositionFader>();
+        fader.SetAnimationCurve(curve);
         instance = this;
     }
 
@@ -30,7 +40,7 @@ public class Elevator : MonoBehaviour {
 
     public static void ResetPositionAndRotation() {
         instance.transform.rotation = originalRotation;
-        instance.transform.position = originalPosition;
+        instance.transform.position = new Vector3(originalPosition.x, instance.transform.position.y, originalPosition.z);
     }
 
     public static void RotateForOS() {
@@ -39,7 +49,7 @@ public class Elevator : MonoBehaviour {
     
     public static void RotateAndPositionForMakenna() {
         instance.transform.rotation = Quaternion.Euler(0, 270, 0);
-        instance.transform.position = makennaPosition;
+        instance.transform.position = new Vector3(makennaPosition.x, instance.transform.position.y, makennaPosition.z);
     }
 
     public static void SelectFloor(GalleryLoader.Room room) {
@@ -53,5 +63,21 @@ public class Elevator : MonoBehaviour {
 
     public static Transform GetTransform() {
         return instance.transform;
+    }
+
+    public static void GoAway(Vector3 target) {
+        if (goneAway) {
+            return;
+        }
+        goneAway = true;
+        instance.fader.Fade(target, ElevatorDoors.OpenStatic);
+    }
+
+    public static void ComeBack() {
+        if (!goneAway || instance == null) {
+            return;
+        }
+        goneAway = false;
+        instance.fader.Fade(originalPosition);
     }
 }

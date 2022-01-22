@@ -31,6 +31,8 @@ public class ElevatorDoors : MonoBehaviour {
     public static float doorOpenAnimationDuration { get; private set; }
     public static float doorCloseAnimationDuration { get; private set; }
 
+    private static ElevatorDoors instance;
+
     private void Awake() {
         audioSource = GetComponent<AudioSource>();
         doorOpenAnimationDuration = openSound.length;
@@ -48,6 +50,12 @@ public class ElevatorDoors : MonoBehaviour {
         }
         
         GalleryLoader.InitializeSoundFadeForDoors(this);
+        instance = this;
+    }
+
+    // This is a lazy way to do this but I'll fix it later if necessary.
+    public static void OpenStatic() {
+        instance.Open();
     }
 
     public void Open() {

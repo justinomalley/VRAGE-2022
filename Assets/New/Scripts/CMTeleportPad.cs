@@ -7,14 +7,21 @@ public class CMTeleportPad : TeleportPad {
 
     private CMGallery gallery;
 
+    private ElevatorSender sender;
+
     protected override void Awake() {
         base.Awake();
         gallery = GetComponentInParent<CMGallery>();
+        sender = GetComponent<ElevatorSender>();
     }
 
     public override void SetCurrentPad() {
         base.SetCurrentPad();
         gallery.SetSound(artist);
+
+        if (sender != null) {
+            sender.Send();
+        }
         
         if (artist == CMGallery.Artist.Chelsee) {
             Elevator.ResetPositionAndRotation();

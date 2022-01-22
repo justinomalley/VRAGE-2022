@@ -511,6 +511,7 @@ GameObject:
   - component: {fileID: 7577846002541204388}
   - component: {fileID: 1766287533}
   - component: {fileID: 1766287534}
+  - component: {fileID: 7194769993559953971}
   m_Layer: 0
   m_Name: VRAGECameraRig
   m_TagString: Untagged
@@ -599,6 +600,18 @@ MonoBehaviour:
   rightActionRef: {fileID: 1291763181620107642, guid: adbc485aed8230d43a186661eb4205fa, type: 3}
   moveSpeed: 0.01
   debugControlsActive: 1
+--- !u!114 &7194769993559953971
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7577846002541204392}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2fb836bb563ad7a439343b9d5a5edda0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7577846002644749117
 GameObject:
   m_ObjectHideFlags: 0
