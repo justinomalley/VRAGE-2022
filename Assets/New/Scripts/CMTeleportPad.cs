@@ -29,4 +29,8 @@ public class CMTeleportPad : TeleportPad {
             Elevator.RotateAndPositionForMakenna();
         }
     }
+
+    public CMGallery.Artist GetArtist() {
+        return artist;
+    }
 }

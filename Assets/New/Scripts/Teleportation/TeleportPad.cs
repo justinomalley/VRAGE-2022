@@ -14,6 +14,8 @@ public class TeleportPad : MonoBehaviour {
 
     private float highlightedAlpha, unhighlightedAlpha;
 
+    private bool activated = true;
+
     protected virtual void Awake() {
         fader = GetComponent<RendererAlphaFader>();
         TeleportPadManager.AddTeleportPad(this);
@@ -68,5 +70,17 @@ public class TeleportPad : MonoBehaviour {
 
     public void Unhighlight() {
         fader.SetValue(unhighlightedAlpha);
+    }
+    
+    public void Activate() {
+        activated = true;
+    }
+    
+    public void Deactivate() {
+        activated = false;
+    }
+
+    public bool IsActive() {
+        return activated;
     }
 }

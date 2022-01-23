@@ -57,7 +57,7 @@ public class TeleportPadManager : MonoBehaviour {
 
         try {
             foreach (var pad in teleportPads) {
-                if (pad.IsCurrentPad()) {
+                if (pad.IsCurrentPad() || !pad.IsActive()) {
                     continue;
                 }
 

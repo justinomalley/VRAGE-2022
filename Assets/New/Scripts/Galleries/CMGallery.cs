@@ -12,6 +12,16 @@ public class CMGallery : GalleryRoom {
     [SerializeField]
     private AudioClip chelseeSound, makennaSound;
 
+    private CMTeleportPad[] cmTeleportPads;
+
+    private static CMGallery instance;
+
+    protected override void Awake() {
+        base.Awake();
+        cmTeleportPads = transform.Find("TeleportationPads").GetComponentsInChildren<CMTeleportPad>();
+        instance = this;
+    }
+
     public void SetSound(Artist artist) {
         if (currentArtist  == artist) {
             return;
@@ -20,5 +30,18 @@ public class CMGallery : GalleryRoom {
         currentArtist = artist;
         audioSource.clip = artist == Artist.Chelsee ? chelseeSound : makennaSound;
         audioSource.Play();
+    }
+
+    public static void DeactivateTeleportPadsOverElevator() {
+        if (instance == null) {
+            return;
+        }
+
+        for (var i = 0; i < instance.cmTeleportPads.Length; i++) {
+            var pad = instance.cmTeleportPads[i];
+            if (instance.currentArtist != pad.GetArtist()) {
+                pad.Deactivate();
+            }
+        }
     }
 }

@@ -100,5 +100,8 @@ public class Elevator : MonoBehaviour {
         }
         goneAway = false;
         instance.fader.Fade(originalPosition);
+        
+        // This call will be ignored if we aren't in the CM gallery.
+        CMGallery.DeactivateTeleportPadsOverElevator();
     }
 }
