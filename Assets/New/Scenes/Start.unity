@@ -538,13 +538,13 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 3f55c7ce286644d48bd76c032fab27af, type: 3}
   - {fileID: 8300000, guid: eef6d760914dec14b857f109044dc55d, type: 3}
   instructionSprites:
-  - {fileID: 21300000, guid: c3ecfc411cbd64a448f11cb5cb3f3823, type: 3}
-  - {fileID: 21300000, guid: 4fe6e84f6aa8de34592b6bb6cd500381, type: 3}
-  - {fileID: 21300000, guid: 2eaffca5890c17c43a90236dbc507060, type: 3}
-  - {fileID: 21300000, guid: fe9f05dcdca0e954287fa1a2add8d179, type: 3}
-  - {fileID: 21300000, guid: 8aef08e56a00d484fbabffbb7d1c52a7, type: 3}
-  - {fileID: 21300000, guid: 5446cbfd603e41949b62c7dac23f7fce, type: 3}
-  - {fileID: 21300000, guid: bebbd6dbaf7c8474c9e366011ebb4094, type: 3}
+  - {fileID: 21300000, guid: 27dd7fe93665c66418b37c03f823a7b8, type: 3}
+  - {fileID: 21300000, guid: c1bb6042037fa1341a9d66437acb8fb7, type: 3}
+  - {fileID: 21300000, guid: 877951a687ec6ec46bd5a2f5900e527f, type: 3}
+  - {fileID: 21300000, guid: 81b140dae41d00a43ab8ae6e728171cd, type: 3}
+  - {fileID: 21300000, guid: 1f4c8e89844badb4898b2571ecbc06e9, type: 3}
+  - {fileID: 21300000, guid: 23442ff89ab7db947968c876524f0ab3, type: 3}
+  - {fileID: 21300000, guid: da9abf5b3268f4d4a94abb11d6a62110, type: 3}
   tutorialAnchor: {fileID: 7577846003330983501}
 --- !u!4 &1071028093
 Transform:
@@ -871,7 +871,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: c3ecfc411cbd64a448f11cb5cb3f3823, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 27dd7fe93665c66418b37c03f823a7b8, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -2094,7 +2094,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7077020823532425926}
   m_LocalRotation: {x: -0.5, y: 0.5, z: -0.5, w: 0.5}
-  m_LocalPosition: {x: 0, y: -0.091, z: 0}
+  m_LocalPosition: {x: 0, y: -0.075, z: 0}
   m_LocalScale: {x: 15, y: 15, z: 15}
   m_Children:
   - {fileID: 1391488805218397850}
