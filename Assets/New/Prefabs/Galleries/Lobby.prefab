@@ -843,6 +843,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: LobbyBook (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 6e8ff96f03c1d4b66a2e29b42b12f68a, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 6e8ff96f03c1d4b66a2e29b42b12f68a, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -1811,6 +1815,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2365319294467425920}
     m_Modifications:
+    - target: {fileID: 100000, guid: 86f01cf2e3b424295b7a889faf14c1d1, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 86f01cf2e3b424295b7a889faf14c1d1, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -2758,6 +2766,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2365319294467425920}
     m_Modifications:
+    - target: {fileID: 100000, guid: 6e8ff96f03c1d4b66a2e29b42b12f68a, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 6e8ff96f03c1d4b66a2e29b42b12f68a, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -2831,6 +2843,10 @@ PrefabInstance:
     - target: {fileID: 100000, guid: 6e8ff96f03c1d4b66a2e29b42b12f68a, type: 3}
       propertyPath: m_Name
       value: LobbyBook (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 6e8ff96f03c1d4b66a2e29b42b12f68a, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 6e8ff96f03c1d4b66a2e29b42b12f68a, type: 3}
       propertyPath: m_RootOrder
