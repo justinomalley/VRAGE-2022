@@ -7,7 +7,8 @@ public class TeleportPad : MonoBehaviour {
     private bool isCurrentPad;
 
     [SerializeField]
-    private bool inFrontOfElevatorTutorialTrigger;
+    private bool inFrontOfElevatorTutorialTrigger,
+        elevatorCallerTutorialTrigger;
 
     private RendererAlphaFader fader;
 
@@ -49,6 +50,10 @@ public class TeleportPad : MonoBehaviour {
 
         if (inFrontOfElevatorTutorialTrigger) {
             Tutorial.StepComplete(Tutorial.TutorialStep.TeleportToElevator);
+        }
+
+        if (elevatorCallerTutorialTrigger) {
+            Tutorial.DisplayElevatorCallMessage();
         }
     }
 

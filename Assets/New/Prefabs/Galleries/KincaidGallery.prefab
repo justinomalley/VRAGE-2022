@@ -10582,4 +10582,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isCurrentPad: 0
+  inFrontOfElevatorTutorialTrigger: 0
+  elevatorCallerTutorialTrigger: 1
   elevatorTarget: {fileID: 1815296474}

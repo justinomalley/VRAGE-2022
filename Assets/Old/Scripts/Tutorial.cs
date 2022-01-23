@@ -15,6 +15,8 @@ public class Tutorial : MonoBehaviour {
 
     private Image image;
 
+    private DismissButton dismissButton;
+
     private static TutorialStep currentStep;
 
     private static Tutorial instance;
@@ -26,6 +28,7 @@ public class Tutorial : MonoBehaviour {
         TeleportToElevator,
         GoInsideElevator,
         EnterFirstGallery,
+        EnteredGalleryWithCallableElevator
     }
 
     private void Awake() {
@@ -33,9 +36,11 @@ public class Tutorial : MonoBehaviour {
         transform.SetParent(tutorialAnchor);
         audioSource = GetComponent<AudioSource>();
         image = GetComponentInChildren<Image>();
+        dismissButton = transform.Find("DismissButton").GetComponent<DismissButton>();
         instance = this;
         
         gameObject.SetActive(false);
+        dismissButton.gameObject.SetActive(false);
     }
 
     public static void StartTutorial() {
@@ -50,7 +55,7 @@ public class Tutorial : MonoBehaviour {
 
         if (step >= TutorialStep.EnterFirstGallery) {
             instance.audioSource.Stop();
-            Destroy(instance.gameObject);
+            instance.gameObject.SetActive(false);
             return;
         }
 
@@ -66,5 +71,16 @@ public class Tutorial : MonoBehaviour {
 
         image.sprite = instructionSprites[index];
         currentStep = step;
+    }
+
+    public static void DisplayElevatorCallMessage() {
+        instance.gameObject.SetActive(true);
+        instance.StartStep(TutorialStep.EnteredGalleryWithCallableElevator);
+        instance.dismissButton.gameObject.SetActive(true);
+    }
+
+    public static void DismissElevatorCallMessage() {
+        instance.gameObject.SetActive(false);
+        instance.dismissButton.gameObject.SetActive(false);
     }
 }

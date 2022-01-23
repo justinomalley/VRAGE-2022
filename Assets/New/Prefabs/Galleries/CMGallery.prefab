@@ -2610,6 +2610,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isCurrentPad: 0
+  inFrontOfElevatorTutorialTrigger: 0
+  elevatorCallerTutorialTrigger: 0
   artist: 1
 --- !u!1001 &5980969273094040520
 PrefabInstance:
@@ -2704,6 +2706,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isCurrentPad: 0
+  inFrontOfElevatorTutorialTrigger: 0
+  elevatorCallerTutorialTrigger: 0
   artist: 0
 --- !u!1001 &5980969273476270202
 PrefabInstance:
@@ -2798,6 +2802,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isCurrentPad: 0
+  inFrontOfElevatorTutorialTrigger: 0
+  elevatorCallerTutorialTrigger: 1
   artist: 0
 --- !u!114 &8400853837707637899
 MonoBehaviour:
@@ -2905,6 +2911,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isCurrentPad: 0
+  inFrontOfElevatorTutorialTrigger: 0
+  elevatorCallerTutorialTrigger: 0
   artist: 1
 --- !u!1001 &5980969274066048292
 PrefabInstance:
@@ -2999,6 +3007,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isCurrentPad: 0
+  inFrontOfElevatorTutorialTrigger: 0
+  elevatorCallerTutorialTrigger: 0
   artist: 1
 --- !u!1001 &6109746197756531728
 PrefabInstance:
@@ -3093,4 +3103,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isCurrentPad: 0
+  inFrontOfElevatorTutorialTrigger: 0
+  elevatorCallerTutorialTrigger: 0
   artist: 0
