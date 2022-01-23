@@ -54,6 +54,7 @@ public class TutorialCube : InteractableObject {
     private void OpenLobby() {
         Destroy(gameObject);
         GalleryLoader.EnterLobby();
+        Tutorial.StepComplete(Tutorial.TutorialStep.InteractCube);
     }
 
     public float GetRotateSpeed() {

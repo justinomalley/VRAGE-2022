@@ -62,7 +62,9 @@ public class TeleportPadManager : MonoBehaviour {
                 }
 
                 pad.gameObject.SetActive(true);
-                pad.FadeIn(instance.unhighlightedAlpha);
+                pad.FadeIn(instance.unhighlightedAlpha, () => {
+                    Tutorial.StepComplete(Tutorial.TutorialStep.ActivatePointer);
+                });
             }
         } catch (InvalidOperationException e) {
             Debug.LogError(e);
@@ -143,7 +145,7 @@ public class TeleportPadManager : MonoBehaviour {
         TeleportToPad();
     }
 
-    private static void TeleportToPad() {
+    private static void TeleportToPad(bool forced = false) {
         // We have to wait to trigger ExitElevator until we've set the new pad to the current
         // one, otherwise other things will think we're entering the elevator when we're
         // actually leaving it.
@@ -153,13 +155,22 @@ public class TeleportPadManager : MonoBehaviour {
         }
         
         _cameraRigTransform.position = hitPad.transform.position;
-        currentPad?.UnsetCurrentPad();
+
+        if (currentPad != null) {
+            currentPad.UnsetCurrentPad();
+        }
+        
         hitPad.SetCurrentPad();
         currentPad = hitPad;
         hitPad = null;
-        
+
+        if (!forced) {
+            Tutorial.StepComplete(Tutorial.TutorialStep.FirstTeleport);
+        }
+
         // Set parent so we can rotate elevator while inside and keep playspace oriented correctly.
         if (currentPad is ElevatorTeleportPad elePad2) {
+            Tutorial.StepComplete(Tutorial.TutorialStep.GoInsideElevator);
             _cameraRigTransform.parent = Elevator.GetTransform();
             elePad2.EnteredElevator();
         } else {
@@ -190,7 +201,7 @@ public class TeleportPadManager : MonoBehaviour {
 
     public static void ForceTeleport(TeleportPad pad) {
         hitPad = pad;
-        TeleportToPad();
+        TeleportToPad(true);
     }
 
     public static void DestroyAllPads() {

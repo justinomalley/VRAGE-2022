@@ -1,9 +1,9 @@
 using UnityEngine;
 
 /// <summary>
-/// AppStarter triggers the app to start once the user has pressed both triggers.
+/// TutorialStarter triggers the app to start once the user has pressed both triggers.
 /// </summary>
-public class AppStarter : MonoBehaviour {
+public class TutorialStarter : MonoBehaviour {
     // `leftObj` and `rightObj` should have scripts on them implementing IXRController.
     [SerializeField]
     private GameObject leftObj, rightObj;
@@ -59,6 +59,7 @@ public class AppStarter : MonoBehaviour {
 
         // These two faders should be configured to have the same fade duration via the inspector.
         backgroundFader.Fade(() => {
+            Tutorial.StartTutorial();
             TeleportPadManager.Activate();
             Destroy(gameObject);
         });

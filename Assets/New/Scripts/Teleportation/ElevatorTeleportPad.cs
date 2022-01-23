@@ -10,5 +10,6 @@ public class ElevatorTeleportPad : TeleportPad {
     
     public void ExitedElevator() {
         doors.Close();
+        Tutorial.StepComplete(Tutorial.TutorialStep.EnterFirstGallery);
     }
 }

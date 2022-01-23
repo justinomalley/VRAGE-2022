@@ -1,9 +1,13 @@
 using UnityEngine;
+using UnityEngine.Events;
 
 public class TeleportPad : MonoBehaviour {
 
     [SerializeField] 
     private bool isCurrentPad;
+
+    [SerializeField]
+    private bool inFrontOfElevatorTutorialTrigger;
 
     private RendererAlphaFader fader;
 
@@ -19,8 +23,8 @@ public class TeleportPad : MonoBehaviour {
         unhighlightedAlpha = unhighlighted;
     }
 
-    public void FadeIn(float alpha) {
-        fader.Fade(alpha);
+    public void FadeIn(float alpha, UnityAction action = null) {
+        fader.Fade(alpha, action);
     }
 
     // `action` will be executed when (and if) the fade is complete.
@@ -42,6 +46,10 @@ public class TeleportPad : MonoBehaviour {
     public virtual void SetCurrentPad() {
         isCurrentPad = true;
         gameObject.SetActive(false);
+
+        if (inFrontOfElevatorTutorialTrigger) {
+            Tutorial.StepComplete(Tutorial.TutorialStep.TeleportToElevator);
+        }
     }
 
     public void UnsetCurrentPad() {

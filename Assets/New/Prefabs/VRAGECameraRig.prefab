@@ -789,6 +789,7 @@ Transform:
   - {fileID: 7577846003450478807}
   - {fileID: 1223170004}
   - {fileID: 1673966219}
+  - {fileID: 1930793245531235205}
   m_Father: {fileID: 7577846002541204393}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1177,3 +1178,33 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 0.5}
   m_Center: {x: 0, y: 0, z: 0.5}
+--- !u!1 &8151489558414297431
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1930793245531235205}
+  m_Layer: 3
+  m_Name: TutorialAnchor
+  m_TagString: Controller
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1930793245531235205
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8151489558414297431}
+  m_LocalRotation: {x: 0.7637886, y: 0.058493163, z: -0.05204241, w: 0.6407006}
+  m_LocalPosition: {x: 0.245, y: -0.051, z: 0.193}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 7577846002882539907}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 100, y: 1.5, z: -7.5}

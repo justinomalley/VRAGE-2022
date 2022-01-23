@@ -1,69 +1,70 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.Video;
+﻿using UnityEngine;
+using UnityEngine.UI;
 
 public class Tutorial : MonoBehaviour {
+    [SerializeField]
+    private AudioClip[] instructionSound;
+    
+    [SerializeField]
+    private Sprite[] instructionSprites;
 
-    public GameObject preElePlane;
+    [SerializeField]
+    private Transform tutorialAnchor;
 
-    private GameManager mgr;
+    private AudioSource audioSource;
 
-    private AudioSource aud;
-    public AudioClip[] clips;
+    private Image image;
 
-    private Renderer tut;
-    public Material img;
+    private static TutorialStep currentStep;
 
-    bool tele1, tele2;
-   
-	// Use this for initialization
-	void Start () {
-        mgr = GameObject.Find("Mgr").GetComponent<GameManager>();
-        aud = GetComponent<AudioSource>();
-        tut = GetComponent<Renderer>();
-        
-	}
-	
-	// Update is called once per frame
-	void Update () {
-        if (preElePlane != null)
-            if (!preElePlane.activeSelf && !tele1)
-            {
-                tele1 = true;
-                tut.material = img;
+    private static Tutorial instance;
 
-                if (!aud.isPlaying)
-                {
-                    aud.clip = clips[0];
-                    aud.Play();
-                }
-                else
-                    StartCoroutine(WaitAndPlay(0));
-            }
-            else if (tele1 && !mgr.elePlane.activeSelf)
-                StartCoroutine(WaitAndDestroy());
-            
-	}
-
-    private IEnumerator WaitAndPlay(int num)
-    {
-        while (aud.isPlaying)
-            yield return null;
-        aud.clip = clips[num];
-        aud.Play();
-
-        if (num == 1)
-            Destroy(this);
-
+    public enum TutorialStep {
+        ActivatePointer,
+        FirstTeleport,
+        InteractCube,
+        TeleportToElevator,
+        GoInsideElevator,
+        EnterFirstGallery,
     }
 
-    private IEnumerator WaitAndDestroy()
-    {
-        while (aud.isPlaying)
-            yield return null;
+    private void Awake() {
+        transform.SetPositionAndRotation(tutorialAnchor.position, tutorialAnchor.rotation);
+        transform.SetParent(tutorialAnchor);
+        audioSource = GetComponent<AudioSource>();
+        image = GetComponentInChildren<Image>();
+        instance = this;
+        
+        gameObject.SetActive(false);
+    }
 
-        Destroy(this.gameObject);
+    public static void StartTutorial() {
+        instance.gameObject.SetActive(true);
+        instance.StartStep(TutorialStep.ActivatePointer);
+    }
 
+    public static void StepComplete(TutorialStep step) {
+        if (instance == null || step < currentStep) {
+            return;
+        }
+
+        if (step >= TutorialStep.EnterFirstGallery) {
+            instance.audioSource.Stop();
+            Destroy(instance.gameObject);
+            return;
+        }
+
+        instance.StartStep(step + 1);
+    }
+
+    private void StartStep(TutorialStep step) {
+        var index = (int) step;
+        
+        audioSource.Stop();
+        audioSource.clip = instructionSound[index];
+        audioSource.Play();
+
+        image.sprite = instructionSprites[index];
+        currentStep = step;
     }
 }
