@@ -3,14 +3,11 @@
 public class ElevatorButton : InteractableObject {
     [SerializeField]
     private GalleryLoader.Room room;
-    
-    private AudioSource src;
 
     private bool selected;
 
     protected override void Awake() {
         base.Awake();
-        src = GetComponent<AudioSource>();
 
         if (room != GalleryLoader.Room.Lobby) {
             return;
@@ -38,11 +35,10 @@ public class ElevatorButton : InteractableObject {
     }
 
     public override void Interact() {
-        if (src != null && src.clip != null) {
-            src.Play();
-        }
-        
-        GalleryLoader.SetGalleryRoom(room);
+        Elevator.SelectFloor(room);
+    }
+
+    public void Select() {
         selected = true;
     }
 

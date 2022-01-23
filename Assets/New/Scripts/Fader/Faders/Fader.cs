@@ -38,11 +38,8 @@ public class Fader<T> : MonoBehaviour {
         }
         
         if (!finishedFadingEventFired && timer.Finished()) {
-            if (finishedFadingEvent == null) {
-                Debug.LogError("YOOOOOO");
-            }
-            finishedFadingEvent.Invoke();
             finishedFadingEventFired = true;
+            finishedFadingEvent.Invoke();
             return;
         }
         
@@ -72,14 +69,14 @@ public class Fader<T> : MonoBehaviour {
     public void Fade(T end, UnityAction action = null) {
         startValue = currentValue;
         endValue = end;
-        timer.Start(duration);
-        finishedFadingEvent.RemoveAllListeners();
 
+        finishedFadingEvent.RemoveAllListeners();
         if (action != null) {
             finishedFadingEvent.AddListener(action);
         }
         
         finishedFadingEventFired = false;
+        timer.Start(duration);
     }
 
     // Setting the value this way will stop any ongoing fades and remove listeners.

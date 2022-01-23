@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 
 public class Elevator : MonoBehaviour {
@@ -11,18 +10,25 @@ public class Elevator : MonoBehaviour {
 
     [SerializeField]
     private Transform makennaTransform;
-
-    [SerializeField]
-    private ElevatorButton[] floorButtons;
     
-    private static Elevator instance;
-
     [SerializeField]
     private AnimationCurve curve;
 
+    [SerializeField]
+    private ElevatorButton[] floorButtons;
+
     private TransformPositionFader fader;
+
+    private AudioSource audioSource;
+
+    [SerializeField]
+    private AudioClip[] floorSounds;
+
+    private ElevatorDisplay display;
     
     private static bool goneAway;
+    
+    private static Elevator instance;
 
     private void Awake() {
         originalRotation = transform.rotation;
@@ -31,6 +37,8 @@ public class Elevator : MonoBehaviour {
         teleportPad = GetComponentInChildren<ElevatorTeleportPad>();
         fader = GetComponent<TransformPositionFader>();
         fader.SetAnimationCurve(curve);
+        audioSource = GetComponent<AudioSource>();
+        display = GetComponentInChildren<ElevatorDisplay>();
         instance = this;
     }
 
@@ -53,12 +61,25 @@ public class Elevator : MonoBehaviour {
     }
 
     public static void SelectFloor(GalleryLoader.Room room) {
+        if (GalleryLoader.GetSelectedRoom() == room || instance.display.IsLoading()) {
+            return;
+        }
+        
+        instance.audioSource.Stop();
+        instance.audioSource.clip = instance.floorSounds[(int) room];
+        instance.audioSource.Play();
+        
         for (var i = 0; i < instance.floorButtons.Length; i++) {
             var button = instance.floorButtons[i];
-            if (button.GetRoom() != room) {
+            if (button.GetRoom() == room) {
+                instance.floorButtons[i].Select();
+            } else {
                 instance.floorButtons[i].Deselect();
             }
         }
+        
+        instance.display.SetRoom(room);
+        GalleryLoader.SetRoom(room);
     }
 
     public static Transform GetTransform() {

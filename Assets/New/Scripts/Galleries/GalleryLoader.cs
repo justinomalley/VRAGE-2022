@@ -57,6 +57,7 @@ public class GalleryLoader : MonoBehaviour {
         selectedRoom = Room.Lobby;
         LoadGallery();
 
+        Destroy(GameObject.Find("GroundPlane"));
         Destroy(GameObject.Find("TutorialOnlyLogo"));
         var lobbyLogo = GameObject.Find("LobbyLogo");
         lobbyLogo.transform.SetParent(galleryInstance.transform);
@@ -71,9 +72,12 @@ public class GalleryLoader : MonoBehaviour {
     /// SelectGalleryRoom sets the internal `selectedGallery` value, which determines which
     /// gallery will be loaded when the user opens the elevator.
     /// </summary>
-    public static void SetGalleryRoom(Room room) {
+    public static void SetRoom(Room room) {
         selectedRoom = room;
-        Elevator.SelectFloor(room);
+    }
+
+    public static Room GetSelectedRoom() {
+        return selectedRoom;
     }
     
     /// <summary>
