@@ -36,8 +36,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: -0.1254, y: 0.207}
-  m_SizeDelta: {x: 0.2, y: 0.12}
+  m_AnchoredPosition: {x: -0.1254, y: 0.1907}
+  m_SizeDelta: {x: 0.15, y: 0.1}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!223 &342684038
 Canvas:
@@ -439,16 +439,16 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5453082110550463872}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0.00000002980233}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 342684035}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0.2, y: 0.12}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6641691626084827272
 CanvasRenderer:
@@ -478,7 +478,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 5446cbfd603e41949b62c7dac23f7fce, type: 3}
+  m_Sprite: {fileID: 21300000, guid: a4f96f0377945f04f8adf1dc1ab42836, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -501,14 +501,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   floorImages:
-  - {fileID: 21300000, guid: 5446cbfd603e41949b62c7dac23f7fce, type: 3}
-  - {fileID: 21300000, guid: 4fe6e84f6aa8de34592b6bb6cd500381, type: 3}
-  - {fileID: 21300000, guid: 2eaffca5890c17c43a90236dbc507060, type: 3}
-  - {fileID: 21300000, guid: fe9f05dcdca0e954287fa1a2add8d179, type: 3}
-  - {fileID: 21300000, guid: bebbd6dbaf7c8474c9e366011ebb4094, type: 3}
-  - {fileID: 21300000, guid: 8e4755083b5d6904db5a3af40b0f86fa, type: 3}
-  - {fileID: 21300000, guid: 2b839f37ff043f64aa2293c919b03366, type: 3}
-  - {fileID: 21300000, guid: 8aef08e56a00d484fbabffbb7d1c52a7, type: 3}
+  - {fileID: 21300000, guid: a4f96f0377945f04f8adf1dc1ab42836, type: 3}
+  - {fileID: 21300000, guid: e677cbe9723e279459b39da187e52f75, type: 3}
+  - {fileID: 21300000, guid: f6d93d020d711bc40a895c6230975c3d, type: 3}
+  - {fileID: 21300000, guid: de76f921d841fdd48b00d0315468bdf7, type: 3}
+  - {fileID: 21300000, guid: c5c9915b1d3dfc5488e131583f721aec, type: 3}
+  - {fileID: 21300000, guid: 9e5c04b50cbdcfe44ab02b3262b69bb8, type: 3}
+  - {fileID: 21300000, guid: 713a10730c34c0249975763b7f70b6de, type: 3}
+  - {fileID: 21300000, guid: 853081fa8b48e45479ddaa2f8302d83e, type: 3}
 --- !u!114 &7113063891511859855
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2121,6 +2121,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isCurrentPad: 0
+  inFrontOfElevatorTutorialTrigger: 0
+  elevatorCallerTutorialTrigger: 0
   doors: {fileID: 8017936459376252430}
 --- !u!1001 &6125086288604940368
 PrefabInstance:
