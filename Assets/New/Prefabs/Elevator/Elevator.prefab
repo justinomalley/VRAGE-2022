@@ -1309,14 +1309,14 @@ MonoBehaviour:
   - {fileID: 5277770423546882262}
   - {fileID: 5277770423932837666}
   floorSounds:
-  - {fileID: 8300000, guid: 52f0fedee7c72e641ab1523c920f8965, type: 3}
-  - {fileID: 8300000, guid: 52f0fedee7c72e641ab1523c920f8965, type: 3}
-  - {fileID: 8300000, guid: 0c7e3c3103d41df46a36d455061ed3a1, type: 3}
-  - {fileID: 8300000, guid: fd96d7fde5fc19c429e7d11c4ba07d54, type: 3}
-  - {fileID: 8300000, guid: 745bb2dbbc4e8214a8c058c70cba017f, type: 3}
-  - {fileID: 8300000, guid: e8b96d1d44b966643a3ca4f79ba0896e, type: 3}
-  - {fileID: 8300000, guid: 3f55c7ce286644d48bd76c032fab27af, type: 3}
-  - {fileID: 8300000, guid: eef6d760914dec14b857f109044dc55d, type: 3}
+  - {fileID: 8300000, guid: 2606cdaf671944041921d79be6e19528, type: 3}
+  - {fileID: 8300000, guid: 7e36531ab1e231e48864e0f3f54cabac, type: 3}
+  - {fileID: 8300000, guid: 3f34234142c5b2e479ba42065ee1b501, type: 3}
+  - {fileID: 8300000, guid: d496783952689df4b8e313f67dbd2560, type: 3}
+  - {fileID: 8300000, guid: 7be25b8657eca324ba8f99c916565548, type: 3}
+  - {fileID: 8300000, guid: b4720257284b308498880b8883826a83, type: 3}
+  - {fileID: 8300000, guid: c9439856b11febd4280268fab197dedb, type: 3}
+  - {fileID: 8300000, guid: 84600bde1a62fc54c97330b6084610e0, type: 3}
 --- !u!82 &2957409105658978281
 AudioSource:
   m_ObjectHideFlags: 0

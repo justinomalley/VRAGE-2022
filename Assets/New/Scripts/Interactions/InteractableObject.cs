@@ -126,12 +126,12 @@ public abstract class InteractableObject : MonoBehaviour {
         }
     }
     
-    protected virtual void Highlight() {
+    protected void Highlight() {
         highlighted = true;
         material.color = highlightedColor;
     }
 
-    protected virtual void Unhighlight() {
+    protected void Unhighlight() {
         highlighted = false;
         material.color = origColor;
     }

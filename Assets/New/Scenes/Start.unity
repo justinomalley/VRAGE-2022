@@ -530,15 +530,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   instructionSound:
-  - {fileID: 8300000, guid: 52f0fedee7c72e641ab1523c920f8965, type: 3}
-  - {fileID: 8300000, guid: 0c7e3c3103d41df46a36d455061ed3a1, type: 3}
-  - {fileID: 8300000, guid: fd96d7fde5fc19c429e7d11c4ba07d54, type: 3}
-  - {fileID: 8300000, guid: 745bb2dbbc4e8214a8c058c70cba017f, type: 3}
-  - {fileID: 8300000, guid: e8b96d1d44b966643a3ca4f79ba0896e, type: 3}
-  - {fileID: 8300000, guid: 3f55c7ce286644d48bd76c032fab27af, type: 3}
-  - {fileID: 8300000, guid: eef6d760914dec14b857f109044dc55d, type: 3}
+  - {fileID: 8300000, guid: 553806b727a1cd24ab4a3fa7787ea4c0, type: 3}
+  - {fileID: 8300000, guid: 90a109ab5c26ea946993b3e19d280cbc, type: 3}
+  - {fileID: 8300000, guid: d0a48f01818c05c4685473fc8940d1ea, type: 3}
+  - {fileID: 8300000, guid: 5688c9c8dcfe6474386005da1b954f8e, type: 3}
+  - {fileID: 8300000, guid: b7c9e894b421fbc41816b8fc7981315d, type: 3}
+  - {fileID: 8300000, guid: d5d0931e95303a144a628405255adb20, type: 3}
+  - {fileID: 8300000, guid: ba35b3ed10e29ba43a933a25819533e6, type: 3}
   instructionSprites:
-  - {fileID: 21300000, guid: 27dd7fe93665c66418b37c03f823a7b8, type: 3}
+  - {fileID: 21300000, guid: 4f0a848c15b574540aabddeda9e33e63, type: 3}
   - {fileID: 21300000, guid: c1bb6042037fa1341a9d66437acb8fb7, type: 3}
   - {fileID: 21300000, guid: 877951a687ec6ec46bd5a2f5900e527f, type: 3}
   - {fileID: 21300000, guid: 81b140dae41d00a43ab8ae6e728171cd, type: 3}
@@ -871,7 +871,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 27dd7fe93665c66418b37c03f823a7b8, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 4f0a848c15b574540aabddeda9e33e63, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
