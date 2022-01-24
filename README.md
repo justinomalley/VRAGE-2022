@@ -21,6 +21,12 @@ Please do be aware that this project is pretty massive due to the number of asse
 
 At this time, only Windows OpenVR is supported. I'm currently working on adding support for Quest as well, but will probably not be supporting any other platforms without good reason.
 
+## Some additional context
+
+This project was originally displayed in an art gallery setting, where most people were trying VR for the first time. Some of the design decisions reflect that. For instance, the tutorial is very hand-holdy, and the teleportation system restricts you to only being able to teleport to predetermined points. This allows us to position the user in reasonable positions within the galleries, but to someone more experienced with VR, it may come off as a bit restrictive.
+
+When this was displayed in art gallery settings, the app would run for 5 - 15 minutes (depending on the build), and then display a pop-up instructing the user to return their headset to the attendant at the installation. This allowed us to keep the line moving when there were lines of people waiting to try the app. In this version, that functionality has been deactivated.
+
 ## Known Issues
 
 - Currently, the app should be usable on most VR devices with a trigger and a thumbstick, but the controllers will always render as Quest 2 controllers. At some point soon, I'll model some basic stand-in controller models to use instead, but the Quest 2 is what I've been using for development, so I went with that for the time being.
@@ -29,11 +35,7 @@ At this time, only Windows OpenVR is supported. I'm currently working on adding 
 
 - Shea's gallery is deactivated until I can replace the trees with something more efficient. Each tree was modeled to somehow use hundreds of materials, resulting in excruciating lag. I'll look into modeling my own trees soon to get that gallery up and running again.
 
-## Some additional context
-
-This project was originally displayed in an art gallery setting, where most people were trying VR for the first time. Some of the design decisions reflect that. For instance, the tutorial is very hand-holdy, and the teleportation system restricts you to only being able to teleport to predetermined points. This allows us to position the user in reasonable positions within the galleries, but to someone more experienced with VR, it may come off as a bit restrictive.
-
-When this was displayed in art gallery settings, the app would run for 5 - 15 minutes (depending on the build), and then display a pop-up instructing the user to return their headset to the attendant at the installation. This allowed us to keep the line moving when there were lines of people waiting to try the app. In this version, that functionality has been deactivated.
+- I haven't implemented grabbable objects yet, so there are no objects that can be picked up at the moment. Shea's gallery was the only one dependent on that feature, so it's not a huge deal, but hoping to have that implemented very soon.
 
 ## 3rd Party Assets
 
