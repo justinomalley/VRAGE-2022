@@ -12,7 +12,7 @@ PlayerSettings:
   targetDevice: 2
   useOnDemandResources: 0
   accelerometerFrequency: 60
-  companyName: DefaultCompany
+  companyName: Pseudodox
   productName: VRAGE-2022
   defaultCursor: {fileID: 0}
   cursorHotspot: {x: 0, y: 0}
@@ -137,9 +137,9 @@ PlayerSettings:
   bundleVersion: 0.1
   preloadedAssets:
   - {fileID: 0}
-  - {fileID: -276788020965259386, guid: 6b7f4d7f28ff7a24b829ac109ccab43f, type: 2}
+  - {fileID: -285186839508708462, guid: 6b7f4d7f28ff7a24b829ac109ccab43f, type: 2}
   - {fileID: 0}
-  - {fileID: -2293474031707679273, guid: 76cd1c041b49e654a8f1d2fffd79f629, type: 2}
+  - {fileID: -1213347496491916643, guid: 76cd1c041b49e654a8f1d2fffd79f629, type: 2}
   metroInputSource: 0
   wsaTransparentSwapchain: 0
   m_HolographicPauseOnTrackingLoss: 1
@@ -157,7 +157,7 @@ PlayerSettings:
   androidSupportedAspectRatio: 1
   androidMaxAspectRatio: 2.1
   applicationIdentifier:
-    Android: com.DefaultCompany.VRAGE2022
+    Android: com.Pseudodox.VRAGE2022
     Standalone: com.DefaultCompany.VRAGE-2022
   buildNumber:
     Standalone: 0

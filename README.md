@@ -47,7 +47,7 @@ This project uses the following 3rd party assets from the Unity Asset Store:
 
 I do not grant permission for anyone to reuse the 3rd party assets listed above. 
 
-# Credits
+## Credits
 
 ### Programmer:
  - Justin O'Malley
