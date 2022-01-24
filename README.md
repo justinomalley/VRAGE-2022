@@ -37,6 +37,8 @@ When this was displayed in art gallery settings, the app would run for 5 - 15 mi
 
 - I haven't implemented grabbable objects yet, so there are no objects that can be picked up at the moment. Shea's gallery was the only one dependent on that feature, so it's not a huge deal, but hoping to have that implemented very soon.
 
+- The cloud models in Mike's gallery don't support single pass rendering, so they only render in one eye. I deactivated them for now, and am planning to adapt the shader to support single pass rendering sometime soon.
+
 ## 3rd Party Assets
 
 This project uses the following 3rd party assets from the Unity Asset Store:
