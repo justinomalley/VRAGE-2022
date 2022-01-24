@@ -1,11 +1,15 @@
 using System;
 using UnityEngine;
 
+/// <summary>
+/// JamesButton manages the buttons in James's gallery. There is one on the radio and one on the tape player.
+/// Pressing one triggers some audio to play (and also triggers the other audio source to stop playing).
+/// </summary>
 public class JamesButton : InteractableObject {
     private JamesGallery gallery;
 
     [SerializeField]
-    private JamesAudio audioToUse;
+    private JamesGallery.JamesAudio audioToUse;
 
     private Vector3 upPosition, downPosition;
 
@@ -26,10 +30,10 @@ public class JamesButton : InteractableObject {
         
         base.Interact();
         switch (audioToUse) {
-            case JamesAudio.Radio:
+            case JamesGallery.JamesAudio.Radio:
                 gallery.PlayRadio();
                 break;
-            case JamesAudio.Tape:
+            case JamesGallery.JamesAudio.Tape:
                 gallery.PlayTape();
                 break;
             default:

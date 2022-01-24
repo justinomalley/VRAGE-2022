@@ -1,10 +1,12 @@
 using UnityEngine;
 
+/// <summary>
+/// TeleportPointer gets input from the controllers to activate the teleportation pointer when necessary,
+/// and gets collision info from `BezierPointer` to allow teleportation.
+/// </summary>
 public class TeleportPointer : MonoBehaviour {
     private VRAGEController controller;
     
-    private TeleportPad currentPad;
-
     private BezierPointer curvedPointer;
 
     [SerializeField]
@@ -41,7 +43,7 @@ public class TeleportPointer : MonoBehaviour {
         if (curvedPointer.IsHittingTarget(out var go)) {
             if (go.CompareTag("TeleportPad")) {
                 curvedPointer.SetColor(hitColor);
-                currentPad = go.GetComponent<TeleportPad>();
+                var currentPad = go.GetComponent<TeleportPad>();
                 TeleportPadManager.HitPad(currentPad,inLeftHand);
             } else {
                 TeleportPadManager.StoppedHittingPad(inLeftHand);

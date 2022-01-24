@@ -2,6 +2,9 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// TeleportPadManager controls the active TeleportPads throughout the scene.
+/// </summary>
 public class TeleportPadManager : MonoBehaviour {
     private static List<TeleportPad> teleportPads = new List<TeleportPad>(20);
 
@@ -56,6 +59,7 @@ public class TeleportPadManager : MonoBehaviour {
         }
 
         try {
+            // Fade in all active teleport pads.
             foreach (var pad in teleportPads) {
                 if (pad.IsCurrentPad() || !pad.IsActive()) {
                     continue;
@@ -67,6 +71,7 @@ public class TeleportPadManager : MonoBehaviour {
                 });
             }
         } catch (InvalidOperationException e) {
+            // I got this exception once, but haven't seen it since. Leaving this for now, but keeping an eye out.
             Debug.LogError(e);
             // Just in case the collection was modified 
             EnableTeleportPads();
@@ -74,6 +79,7 @@ public class TeleportPadManager : MonoBehaviour {
     }
 
     private static void DisableTeleportPads(bool fade) {
+        // Fade out all teleport pads.
         foreach (var pad in teleportPads) {
             if (pad.IsCurrentPad()) {
                 continue;
@@ -87,6 +93,9 @@ public class TeleportPadManager : MonoBehaviour {
         }
     }
     
+    /// <summary>
+    /// HitPad is called when a teleport pad has been hit by the teleport pointer.
+    /// </summary>
     public static void HitPad(TeleportPad pad, bool isLeftHand) {
         if (hittingPad && hitPad == pad || pointerInLeftHand != isLeftHand) {
             return;
@@ -101,7 +110,10 @@ public class TeleportPadManager : MonoBehaviour {
         hitPad = pad;
         hitPad.Highlight();
     }
-
+    
+    /// <summary>
+    /// StoppedHittingPad is called on a frame when the teleport pointer hasn't hit any teleport pads.
+    /// </summary>
     public static void StoppedHittingPad(bool isLeftHand) {
         if (!hittingPad || pointerInLeftHand != isLeftHand) {
             return;
@@ -144,7 +156,12 @@ public class TeleportPadManager : MonoBehaviour {
 
         TeleportToPad();
     }
-
+    
+    /// <summary>
+    /// TeleportToPad is called when a user releases their teleportation pointer while pointing
+    /// at a valid teleport pad. If `force` is true, we've teleported the user internally,
+    /// so don't proceed through the tutorial steps.
+    /// </summary>
     private static void TeleportToPad(bool forced = false) {
         // We have to wait to trigger ExitElevator until we've set the new pad to the current
         // one, otherwise other things will think we're entering the elevator when we're
@@ -206,6 +223,7 @@ public class TeleportPadManager : MonoBehaviour {
 
     public static void DestroyAllPads() {
         foreach (var pad in teleportPads) {
+            // Never destroy the elevator teleport pad.
             if (pad is ElevatorTeleportPad) {
                 continue;
             }

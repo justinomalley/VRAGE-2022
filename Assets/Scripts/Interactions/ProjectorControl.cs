@@ -1,6 +1,10 @@
 using UnityEngine;
 using UnityEngine.Video;
 
+/// <summary>
+/// ProjectorControl controls the projector in Nichole's gallery room.
+/// Pressing the interactable button will cause her film to play on the projector screen.
+/// </summary>
 public class ProjectorControl : InteractableObject {
     [SerializeField]
     private VideoPlayer videoPlayer;

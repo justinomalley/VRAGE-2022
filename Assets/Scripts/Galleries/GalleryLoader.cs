@@ -31,10 +31,10 @@ public class GalleryLoader : MonoBehaviour {
         OS = 7,
     }
 
-    // selectedGallery is the gallery that was last selected (typically via an elevator button).
+    // selectedGallery is the gallery that was last selected (via an elevator button).
     private static Room selectedRoom;
     
-    // currentGallery is the gallery we are currently in.
+    // currentGallery is the gallery that is currently loaded.
     private static Room currentRoom = Room.None;
     
     private static GalleryLoader instance;
@@ -114,7 +114,8 @@ public class GalleryLoader : MonoBehaviour {
             Room.OS => Instantiate(_galleries[(int)Room.OS]),
             _ => throw new ArgumentOutOfRangeException(nameof(selectedRoom), selectedRoom, null)
         };
-
+        
+        // Position the elevator if necessary.
         if (selectedRoom == Room.OS) {
             Elevator.RotateForOS();
         } else {
@@ -125,7 +126,11 @@ public class GalleryLoader : MonoBehaviour {
         currentRoom = selectedRoom;
         action?.Invoke();
     }
-
+    
+    /// <summary>
+    /// FadeOutGalleryAudioInElevator fades out the audio source in the gallery
+    /// when the elevator doors are closing.
+    /// </summary>
     private static void FadeOutGalleryAudioInElevator() {
         if (Elevator.InElevator()) {
             galleryInstance.FadeAudioOutOnExit();
@@ -134,6 +139,10 @@ public class GalleryLoader : MonoBehaviour {
         }
     }
 
+    /// <summary>
+    /// FadeInGalleryAudioInElevator fades in the audio source in the gallery
+    /// when the elevator doors are opening.
+    /// </summary>
     private static void FadeInGalleryAudioInElevator() {
         if (Elevator.InElevator()) {
             galleryInstance.FadeAudioInOnEntry();

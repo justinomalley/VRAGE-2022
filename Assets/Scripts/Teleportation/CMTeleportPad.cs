@@ -1,5 +1,9 @@
 using UnityEngine;
 
+/// <summary>
+/// CMTeleportPad is a script representing teleport pads in the CM gallery.
+/// This implementation allows us to reposition the elevator when the user switches between rooms.
+/// </summary>
 public class CMTeleportPad : TeleportPad {
     
     [SerializeField]
@@ -17,12 +21,13 @@ public class CMTeleportPad : TeleportPad {
 
     public override void SetCurrentPad() {
         base.SetCurrentPad();
-        gallery.SetSound(artist);
+        gallery.SetArtist(artist);
 
         if (sender != null) {
             sender.Send();
         }
         
+        // Reposition elevator for the appropriate room.
         if (artist == CMGallery.Artist.Chelsee) {
             Elevator.ResetPositionAndRotation();
         } else {

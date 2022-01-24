@@ -1,18 +1,27 @@
 using System;
 using UnityEngine;
 
+/// <summary>
+/// InteractableObject is an abstract implementation for a generally interactable object.
+/// This script is used to implement the tutorial cube, elevator buttons, and eventually
+/// will be used for grabbable objects as well.
+/// </summary>
 public abstract class InteractableObject : MonoBehaviour {
+    
+    /* State */
     
     protected bool leftTouching, rightTouching;
 
     protected bool highlighted;
+    
+    /* Color/highlight */
 
     protected Material material;
     
     [SerializeField]
     private Color highlightedColor;
-    
-    protected Color origColor;
+
+    private Color origColor;
 
     // Use virtual methods instead of abstract so subclasses can just implement what they need.
 

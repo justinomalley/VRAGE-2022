@@ -2,11 +2,14 @@ using UnityEngine;
 
 public class JamesGallery : GalleryRoom {
 
-    [SerializeField]
-    private AudioClip radioClip, tapeClip;
+    [SerializeField] private AudioClip radioClip, tapeClip;
 
-    [SerializeField]
-    private JamesButton radioButton, tapeButton;
+    [SerializeField] private JamesButton radioButton, tapeButton;
+
+    public enum JamesAudio {
+        Radio,
+        Tape
+    }
 
     public void PlayRadio() {
         radioButton.Press();
@@ -29,9 +32,4 @@ public class JamesGallery : GalleryRoom {
         radioButton.Unpress();
         audioSource.Stop();
     }
-}
-
-public enum JamesAudio {
-    Radio,
-    Tape
 }

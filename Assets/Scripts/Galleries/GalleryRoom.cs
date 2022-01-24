@@ -1,5 +1,8 @@
 using UnityEngine;
 
+/// <summary>
+/// GalleryRoom represents the various gallery rooms that can be visited via the Elevator.
+/// </summary>
 public class GalleryRoom : MonoBehaviour {
     
     protected AudioSource audioSource;

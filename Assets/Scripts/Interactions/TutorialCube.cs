@@ -1,6 +1,11 @@
 ﻿using UnityEngine;
 
+/// <summary>
+/// TutorialCube is a cube the user must interact with to begin VRAGE.
+/// </summary>
 public class TutorialCube : InteractableObject {
+    
+    /* Animation */
 
     [SerializeField] 
     private float rotateSpeed = 100f;
@@ -8,11 +13,13 @@ public class TutorialCube : InteractableObject {
     [SerializeField]
     private AnimationCurve rotateCurve;
 
-    private bool triggered;
-
     private TransformScaleFader scaleFader;
 
     private TutorialCubeRotateSpeedFader rotateFader;
+    
+    /* State */
+    
+    private bool triggered;
     
     protected override void Awake() {
         base.Awake();

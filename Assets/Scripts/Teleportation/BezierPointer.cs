@@ -1,5 +1,9 @@
 using UnityEngine;
 
+/// <summary>
+/// BezierPointer renders a bezier curve. It stops when a collider is hit,
+/// and stores data on the hit point and gameobject.
+/// </summary>
 [RequireComponent(typeof(LineRenderer))]
 public class BezierPointer : MonoBehaviour {
     private LineRenderer lineRenderer;

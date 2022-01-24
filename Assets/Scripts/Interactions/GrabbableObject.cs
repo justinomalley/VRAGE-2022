@@ -1,5 +1,8 @@
 using UnityEngine;
 
+/// <summary>
+/// In progress.
+/// </summary>
 public class GrabbableObject : InteractableObject {
 
     public virtual void Grabbed() { }
