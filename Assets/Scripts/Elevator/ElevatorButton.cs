@@ -1,5 +1,10 @@
 ﻿using UnityEngine;
 
+/// <summary>
+/// ElevatorButton is a clickable button on the elevator control panel that allows the user
+/// to select their destination gallery room. See `ElevatorOpenButton` for the button that
+/// actually loads the gallery and opens the elevator doors.
+/// </summary>
 public class ElevatorButton : InteractableObject {
     [SerializeField]
     private GalleryLoader.Room room;

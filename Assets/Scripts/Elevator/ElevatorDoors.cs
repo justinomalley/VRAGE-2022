@@ -6,7 +6,7 @@ using UnityEngine.Events;
 /// </summary>
 public class ElevatorDoors : MonoBehaviour {
 
-    private AudioSource audioSource;
+    /* Animation */
 
     //`positionFaders` is used to animate the positions of the doors.
     private TransformPositionFader[] positionFaders;
@@ -18,18 +18,30 @@ public class ElevatorDoors : MonoBehaviour {
     [SerializeField]
     private AnimationCurve curve;
     
+    /* Sound */
+    
+    private AudioSource audioSource;
+    
     [SerializeField]
     private AudioClip openSound, closeSound;
+    
+    /* Events for various elevator door actions */
 
     public UnityEvent doorsOpenedEvent { get; } = new UnityEvent();
     public UnityEvent doorsOpeningEvent { get; } = new UnityEvent();
     public UnityEvent doorsClosedEvent { get; } = new UnityEvent();
     public UnityEvent doorsClosingEvent { get; } = new UnityEvent();
-
-    private bool doorsOpening, doorsClosing;
+    
+    /* Animation durations (determined by length of respective audio clips)*/
     
     public static float doorOpenAnimationDuration { get; private set; }
     public static float doorCloseAnimationDuration { get; private set; }
+    
+    /* State */
+    
+    private bool doorsOpening, doorsClosing;
+    
+    /* Singleton instance*/
 
     private static ElevatorDoors instance;
 
@@ -52,8 +64,7 @@ public class ElevatorDoors : MonoBehaviour {
         GalleryLoader.InitializeSoundFadeForDoors(this);
         instance = this;
     }
-
-    // This is a lazy way to do this but I'll fix it later if necessary.
+    
     public static void OpenStatic() {
         instance.Open();
     }

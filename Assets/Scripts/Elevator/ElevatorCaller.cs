@@ -13,12 +13,14 @@ public class ElevatorCaller : MonoBehaviour {
 
     private void Update() {
         var callElevator = true;
-        foreach (var controller in controllers) {
-            callElevator &= controller.InteractButtonPressed();
+        
+        // Call the elevator back if both interact buttons are pressed during the same frame.
+        for (var i = 0; i < controllers.Length; i++) {
+            callElevator &= controllers[i].InteractButtonPressed();
         }
 
         if (callElevator) {
-            Elevator.ComeBack();
+            Elevator.CallBack();
         }
     }
 }

@@ -1,6 +1,10 @@
 using UnityEngine;
 
+/// <summary>
+/// AnimationTimer is a timer script for tracking the progress of various animations.
+/// </summary>
 public class AnimationTimer {
+    
     private float timer, startTime, duration, progress;
 
     private bool started, finished;

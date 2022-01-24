@@ -14,7 +14,7 @@ public class KincaidTeleportPad : TeleportPad {
             return;
         }
 
-        Elevator.GoAway(elevatorTarget.position);
+        Elevator.SendAway(elevatorTarget.position);
         sentAwayElevator = true;
     }
 }

@@ -10,14 +10,14 @@ public class TutorialCubeRotateSpeedFader : Fader<float> {
 
     private TutorialCube cube;
 
-    private AnimateTutorialCubeRotateSpeed scaleAnimator;
+    private AnimateTutorialCubeRotateSpeed rotationAnimator;
 
     private readonly AnimatableFloat animProgressEvaluator = new AnimatableFloat();
     
     private void Start() {
         cube = GetComponentInParent<TutorialCube>();
         currentValue = cube.GetRotateSpeed();
-        scaleAnimator = GetComponent<AnimateTutorialCubeRotateSpeed>();
-        Initialize(scaleAnimator, animProgressEvaluator, startFloat, endFloat, fadeDuration);
+        rotationAnimator = GetComponent<AnimateTutorialCubeRotateSpeed>();
+        Initialize(rotationAnimator, animProgressEvaluator, startFloat, endFloat, fadeDuration);
     }
 }

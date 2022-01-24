@@ -11,7 +11,7 @@ public class ElevatorSender : MonoBehaviour {
             return;
         }
         
-        Elevator.GoAway(target.position);
+        Elevator.SendAway(target.position);
         sent = true;
     }
 }

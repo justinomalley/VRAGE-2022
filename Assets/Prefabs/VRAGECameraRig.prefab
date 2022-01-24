@@ -657,7 +657,7 @@ MonoBehaviour:
   leftActionRef: {fileID: 6094658338185063695, guid: adbc485aed8230d43a186661eb4205fa, type: 3}
   rightActionRef: {fileID: 1291763181620107642, guid: adbc485aed8230d43a186661eb4205fa, type: 3}
   moveSpeed: 0.01
-  debugControlsActive: 1
+  debugControlsActive: 0
 --- !u!114 &7194769993559953971
 MonoBehaviour:
   m_ObjectHideFlags: 0

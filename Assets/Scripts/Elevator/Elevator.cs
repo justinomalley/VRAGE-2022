@@ -2,10 +2,13 @@ using UnityEngine;
 
 /// <summary>
 /// Elevator manages the elevator that allows players to navigate between the various galleries.
+/// This is a singleton, so anything that can be static is.
 /// </summary>
 public class Elevator : MonoBehaviour {
     
-    private ElevatorTeleportPad teleportPad;
+    //`teleportPad` is the teleport pad inside the elevator. When it is teleported to,
+    // we know the user is in the elevator.
+    private static ElevatorTeleportPad teleportPad;
     
     /* Reorientation */
 
@@ -17,30 +20,40 @@ public class Elevator : MonoBehaviour {
     [SerializeField]
     private Transform makennaTransform;
     
-    private TransformPositionFader fader;
-
-    private AudioSource audioSource;
-
-    [SerializeField]
-    private AudioClip[] floorSounds;
-
-    private ElevatorDisplay display;
+    // `goneAway` is set to true when the elevator disappears (only happens in certain galleries where it gets in the way).
+    private static bool sentAway;
     
-    private static bool goneAway;
-
+    // `fader` is used to animate the position of the elevator (to make it disappear).
+    private static TransformPositionFader fader;
+    
+    // `curve` is applied to the elevator position animation to make it a bit smoother.
     [SerializeField]
     private AnimationCurve curve;
-
+    
+    /* Button panel and display */
+    
     [SerializeField]
     private ElevatorButton[] floorButtons;
+    
+    // `floorSounds` are the sounds used when an elevator button is pressed and a gallery floor is selected.
+    [SerializeField]
+    private AudioClip[] floorSounds;
+    
+    private static AudioSource audioSource;
+    
+    private static ElevatorDisplay display;
+    
+    /* Singleton Instance */
     
     private static Elevator instance;
 
     private void Awake() {
-        originalRotation = transform.rotation;
-        originalPosition = transform.position;
-        makennaPosition = makennaTransform.position;
         teleportPad = GetComponentInChildren<ElevatorTeleportPad>();
+        
+        originalPosition = transform.position;
+        originalRotation = transform.rotation;
+        makennaPosition = makennaTransform.position;
+        
         fader = GetComponent<TransformPositionFader>();
         fader.SetAnimationCurve(curve);
         audioSource = GetComponent<AudioSource>();
@@ -49,32 +62,47 @@ public class Elevator : MonoBehaviour {
     }
 
     public static bool InElevator() {
-        return instance.teleportPad.IsCurrentPad();
+        return teleportPad.IsCurrentPad();
     }
 
+    /// <summary>
+    /// ResetPositionAndRotation resets the elevator to its original position and rotation.
+    /// The y-position is ignored so as not to interfere with the elevator rising and falling
+    /// position if it is currently in progress.
+    /// </summary>
     public static void ResetPositionAndRotation() {
-        instance.transform.rotation = originalRotation;
-        instance.transform.position = new Vector3(originalPosition.x, instance.transform.position.y, originalPosition.z);
+        var t = instance.transform;
+        t.rotation = originalRotation;
+        t.position = new Vector3(originalPosition.x, t.position.y, originalPosition.z);
     }
 
+    /// <summary>
+    /// RotateforOS rotates the elevator for positioning in the OS gallery.
+    /// </summary>
     public static void RotateForOS() {
         instance.transform.rotation = Quaternion.Euler(0, 180, 0);
     }
     
+    /// <summary>
+    /// RotateAndPositionForMakenna rotates and positions the elevator for Makenna's portion of the CM gallery.
+    /// </summary>
     public static void RotateAndPositionForMakenna() {
-        instance.transform.rotation = Quaternion.Euler(0, 270, 0);
-        instance.transform.position = new Vector3(makennaPosition.x, instance.transform.position.y, makennaPosition.z);
+        var t = instance.transform;
+        t.rotation = Quaternion.Euler(0, 270, 0);
+        t.position = new Vector3(makennaPosition.x, t.position.y, makennaPosition.z);
     }
-
+    
     public static void SelectFloor(GalleryLoader.Room room) {
-        if (GalleryLoader.GetSelectedRoom() == room || instance.display.IsLoading()) {
+        if (GalleryLoader.GetSelectedRoom() == room || display.IsLoading()) {
             return;
         }
         
-        instance.audioSource.Stop();
-        instance.audioSource.clip = instance.floorSounds[(int) room];
-        instance.audioSource.Play();
+        // Play the audio clip for the selected floor.
+        audioSource.Stop();
+        audioSource.clip = instance.floorSounds[(int) room];
+        audioSource.Play();
         
+        // Unhighlight all buttons except for the currently selected one.
         for (var i = 0; i < instance.floorButtons.Length; i++) {
             var button = instance.floorButtons[i];
             if (button.GetRoom() == room) {
@@ -84,30 +112,41 @@ public class Elevator : MonoBehaviour {
             }
         }
         
-        instance.display.SetRoom(room);
+        // Update the screen above the control panel in the elevator
+        display.SetRoom(room);
+        
+        // Load the next room.
         GalleryLoader.SetRoom(room);
     }
 
     public static Transform GetTransform() {
         return instance.transform;
     }
-
-    public static void GoAway(Vector3 target) {
-        if (goneAway) {
+    
+    /// <summary>
+    /// SendAway sends the elevator to a predetermined `target` position to hide it in certain gallery rooms.
+    /// </summary>
+    public static void SendAway(Vector3 target) {
+        if (sentAway) {
             return;
         }
-        goneAway = true;
-        instance.fader.Fade(target, ElevatorDoors.OpenStatic);
+        sentAway = true;
+        fader.Fade(target);
     }
-
-    public static void ComeBack() {
-        if (!goneAway || instance == null) {
+    
+    /// <summary>
+    /// CallBack calls the elevator back if it has been sent away.
+    /// </summary>
+    public static void CallBack() {
+        if (!sentAway || instance == null) {
             return;
         }
-        goneAway = false;
-        instance.fader.Fade(originalPosition);
+        sentAway = false;
+        fader.Fade(originalPosition, ElevatorDoors.OpenStatic);
         
         // This call will be ignored if we aren't in the CM gallery.
+        // It just deactivates the teleportation pads in the adjacent room in the CM
+        // gallery to avoid the user being able to teleport where the elevator is about to rise.
         CMGallery.DeactivateTeleportPadsOverElevator();
     }
 }
