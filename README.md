@@ -2,6 +2,8 @@
 
 ![Sarah's Gallery](/Media/SarahGallery2.PNG)
 
+_(Above) 3D Art by Sarah Belheumer on the 1st floor of VRAGE_
+
 ## Background
 
 _VRAGE_ (The Virtual Reality Art Gallery Experience), is a collaborative project created by Pseudodox Collective, a (now dissolved) digital arts collective based out of Portland, ME. It showcases collaborations between artists of various traditional mediums, 3D artists, and a computer science student studying applications of virutal reality (that's me!). 
