@@ -1,0 +1,102 @@
+{
+    "name": "DebugActions",
+    "maps": [
+        {
+            "name": "Keyboard",
+            "id": "e3fc82a4-58db-45fb-b914-19d7cb01d913",
+            "actions": [
+                {
+                    "name": "Forward",
+                    "type": "Button",
+                    "id": "b09321a6-936b-4ae3-b50e-e4dfcd3ca3d6",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "Backward",
+                    "type": "Button",
+                    "id": "b02d0ea0-c12f-492d-b61f-629d08ec1889",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "Left",
+                    "type": "Button",
+                    "id": "0f120a61-43fd-46c8-815e-71f94f55884a",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "Right",
+                    "type": "Button",
+                    "id": "40f64a58-5a85-4b4f-a505-dd14faab0c58",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "7cd3838b-4cbe-446a-b6ff-1e6973e7acbb",
+                    "path": "<Keyboard>/w",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Forward",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "6b992947-d8e6-4a86-ac5e-977b84a9a040",
+                    "path": "<Keyboard>/s",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Backward",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "df2f12f9-b8c9-457a-912f-92559d0915c5",
+                    "path": "<Keyboard>/d",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Right",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "eb557873-cbe1-4089-80f8-37b119639a62",
+                    "path": "<Keyboard>/a",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Left",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": [
+        {
+            "name": "XR Usage",
+            "bindingGroup": "XR Usage",
+            "devices": [
+                {
+                    "devicePath": "<XRController>",
+                    "isOptional": false,
+                    "isOR": false
+                }
+            ]
+        }
+    ]
+}
